@@ -1,0 +1,4 @@
+# music!
+
+testSong = resources/music/notsnake_test.it
+# Alternative: replace .it with .xm

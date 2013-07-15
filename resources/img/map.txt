@@ -1,0 +1,73 @@
+#### PNG level files
+# A: Start
+# Exit
+B = resources/img/exithole3.png
+# Wall or castle filler
+C = resources/img/wall15-13.png
+# Normal castles
+D = resources/img/aphid5.1.png, resources/img/aphid5.2.png, resources/img/aphid5.3.png, resources/img/aphid5.2.png
+E = resources/img/aphid5.1.png, resources/img/aphid5.2.png, resources/img/aphid5.3.png, resources/img/aphid5.2.png
+F = resources/img/aphid5.1.png, resources/img/aphid5.2.png, resources/img/aphid5.3.png, resources/img/aphid5.2.png
+# Weak castles
+G = resources/img/aphid5dead.png
+H = resources/img/aphid5dead.png
+I = resources/img/aphid5dead.png
+# J: Weak castle filler
+# Ordered castles
+K = resources/img/ordered1a.1.png, resources/img/ordered1a.2.png, resources/img/ordered1a.3.png, resources/img/ordered1a.2.png
+L = resources/img/ordered2a.1.png, resources/img/ordered2a.2.png, resources/img/ordered2a.3.png, resources/img/ordered2a.2.png
+M = resources/img/ordered3a.1.png, resources/img/ordered3a.2.png, resources/img/ordered3a.3.png, resources/img/ordered3a.2.png
+N = resources/img/ordered4a.1.png, resources/img/ordered4a.2.png, resources/img/ordered4a.3.png, resources/img/ordered4a.2.png
+O = resources/img/ordered5a.1.png, resources/img/ordered5a.2.png, resources/img/ordered5a.3.png, resources/img/ordered5a.2.png
+P = resources/img/ordered6a.1.png, resources/img/ordered6a.2.png, resources/img/ordered6a.3.png, resources/img/ordered6a.2.png
+Q = resources/img/ordered7a.1.png, resources/img/ordered7a.2.png, resources/img/ordered7a.3.png, resources/img/ordered7a.2.png
+R = resources/img/ordered8a.1.png, resources/img/ordered8a.2.png, resources/img/ordered8a.3.png, resources/img/ordered8a.2.png
+S = resources/img/ordered9a.1.png, resources/img/ordered9a.2.png, resources/img/ordered9a.3.png, resources/img/ordered9a.2.png
+
+#### Miscellaneous
+# Mask
+# e is animated piece, m is the static piece draw after the animation.
+e = resources/img/mask3-2.2.png, resources/img/mask3-2.3.png, resources/img/mask3-2.4.png, resources/img/mask3-2.5.png,
+m = resources/img/mask3-2.5.png
+
+#### Beetle
+# Up
+u = resources/img/beetle1-u.1.png, resources/img/beetle1-u.2.png, resources/img/beetle1-u.3.png, resources/img/beetle1-u.4.png
+# Down
+i = resources/img/beetle1-d.1.png, resources/img/beetle1-d.2.png, resources/img/beetle1-d.3.png, resources/img/beetle1-d.4.png
+# Left
+o = resources/img/beetle1-l.1.png, resources/img/beetle1-l.2.png, resources/img/beetle1-l.3.png, resources/img/beetle1-l.4.png
+# Right
+p = resources/img/beetle1-r.1.png, resources/img/beetle1-r.2.png, resources/img/beetle1-r.3.png, resources/img/beetle1-r.4.png
+
+#### Trail
+# Cross
+q = resources/img/silk_udlr.png
+# Vertical
+z = resources/img/silk_ud.png
+# Horizontal
+x = resources/img/silk_lr.png
+# Up-left
+c = resources/img/silk_ul.png
+# Up-right
+v = resources/img/silk_ur.png
+# Down-left
+b = resources/img/silk_dl.png
+# Down-right
+n = resources/img/silk_dr.png
+# Up-down-left
+h = resources/img/silk_udl.png
+# Up-down-right
+j = resources/img/silk_udr.png
+# Up-left-right
+k = resources/img/silk_ulr.png
+# Down-left-right
+l = resources/img/silk_dlr.png
+# Start up
+a = resources/img/silk_start_u.png
+# Stard down
+s = resources/img/silk_start_d.png
+# Start left
+d = resources/img/silk_start_l.png
+# Start right
+f = resources/img/silk_start_r.png

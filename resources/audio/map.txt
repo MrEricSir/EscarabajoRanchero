@@ -1,0 +1,10 @@
+# audio!
+
+levelStart = resources/audio/blip.wav
+pause = resources/audio/pause.wav
+playerDeath = resources/audio/death.wav
+#playerWin =
+trailCross = resources/audio/trail_cross.wav
+lassoComplete = resources/audio/lasso_complete.wav
+#lassoIncomplete =
+#lassoWeakCastle

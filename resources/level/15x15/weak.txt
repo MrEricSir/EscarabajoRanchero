@@ -1,0 +1,50 @@
+[Structure]
+# . = empty
+# w = wall
+# s = start
+# f = exit
+# n = normal castle
+# 1-9 = ordered castle 1-9
+# c = weak castle (one required)
+# a = wall for weak castle
+
+wwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwfw
+wwwwwwwwwwwwwwwwwww.w
+wwwwwwwwwwwwwwwwwww.w
+wwwwwww.......wwwww.w
+wwww......c.....www.w
+w...................w
+w.ww.....nww....wwwww
+w.wwwww.......wwwwwww
+w.wwwwwwwwwwwwwwwwwww
+w.wwwwwwwwwwwwwwwwwww
+wswwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwww
+
+[Sprites]
+# . = empty
+# w = wall
+# s = start
+# f = exit
+# K = normal castle
+# 1-9 = ordered castle 1-9
+# C = weak castle
+
+wwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwfw
+wwwwwwwwwwwwwwwwwww.w
+wwwwwwwwwwwwwwwwwww.w
+wwwwwww.......wwwww.w
+wwww......C.....www.w
+w...................w
+w.ww.....KKK....wwwww
+w.wwwww.......wwwwwww
+w.wwwwwwwwwwwwwwwwwww
+w.wwwwwwwwwwwwwwwwwww
+wswwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwww
