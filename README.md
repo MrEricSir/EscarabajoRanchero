@@ -21,8 +21,6 @@ A C++ compiler and CMake are required.  You will need the following libraries an
 * SDL_image
 
 The recommended way to build on *nix systems is as follows:
-> $ mkdir build
->
 > $ cd build
 >
 > $ cmake ..
