@@ -59,6 +59,11 @@ Find_Package(SDL_mixer REQUIRED)
 Find_Package(OpenGL REQUIRED)
 
 set(CFLAGS
+    ${OPENGL_CFLAGS}
+    ${GL_CFLAGS}
+    ${SDL_CFLAGS}
+    ${SDLIMAGE_CFLAGS}
+    ${SDLMIXER_CFLAGS}
     -D_VERSION=\"${VERSION}\"
     -D_INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"
     -D_SOURCE_ROOT_DIR=\"${CMAKE_SOURCE_DIR}\"
@@ -69,17 +74,17 @@ if (NOT DEBUG)
     set(CFLAGS
         ${CFLAGS}
         -O2
-    )    
+    )
 endif ()
 
-include_directories(${OPENGL_INCLUDE_DIRS} ${SDL_INCLUDE_DIR})
-message("sdl dirs " ${SDL_INCLUDE_DIR})
+include_directories(${OPENGL_INCLUDE_DIRS} ${SDL_INCLUDE_DIR} ${SDLIMAGE_INCLUDE_DIR} ${SDLMIXER_INCLUDE_DIR})
 link_directories()
 add_definitions(${CFLAGS})
 
 add_executable(escarabajo ${GAME_SRC})
 target_link_libraries(escarabajo ${OPENGL_LIBRARIES} ${GL_LIBRARY} ${SDL_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLMIXER_LIBRARY})
 
+# Copy binary to project root.
 add_custom_command(
     TARGET
         escarabajo
@@ -88,8 +93,6 @@ add_custom_command(
         ${CMAKE_COMMAND} -E copy escarabajo ${CMAKE_SOURCE_DIR}/
 )
 
-
-
 # For make clean.
 set_property(
     DIRECTORY ..
@@ -97,4 +100,3 @@ set_property(
     PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
         escarabajo
 )
-
