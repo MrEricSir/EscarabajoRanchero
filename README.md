@@ -20,6 +20,9 @@ A C++ compiler and CMake are required.  You will need the following libraries an
 * SDL_mixer
 * SDL_image
 
+On Ubuntu, these packages can be installed with:
+> sudo apt-get install build-essential cmake libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libgl1-mesa-dev
+
 The recommended way to build on *nix systems is as follows:
 > $ cd build
 >
