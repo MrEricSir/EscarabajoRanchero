@@ -27,6 +27,8 @@ The recommended way to build on *nix systems is as follows:
 > $ cd build
 >
 > $ cmake ..
+>
+> $ make
 
 Running and installing
 ----------------------
