@@ -1,7 +1,7 @@
-[Test]
-dir = resources/level/15x15/
-levels = wrap2.png,laps.png,wrap1.png,ordered3.png,paw.png,ordered2.png,4eyes.png,3eyes.png,L7.png
-background = resources/img/bg1.png
+#[Test]
+#dir = resources/level/15x15/
+#levels = wrap2.png,laps.png,wrap1.png,ordered3.png,paw.png,ordered2.png,4eyes.png,3eyes.png,L7.png
+#background = resources/img/bg1.png
 
 [1A: Hill]
 # Difficulty: introdutory to easy
