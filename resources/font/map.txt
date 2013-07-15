@@ -1,0 +1,57 @@
+# Think of the children.
+# I do it all for them.
+
+# alphabet
+
+a = resources/font/type1/a.png
+b = resources/font/type1/b.png
+c = resources/font/type1/c.png
+d = resources/font/type1/d.png
+e = resources/font/type1/e.png
+f = resources/font/type1/f.png
+g = resources/font/type1/g.png
+h = resources/font/type1/h.png
+i = resources/font/type1/i.png
+j = resources/font/type1/j.png
+k = resources/font/type1/k.png
+l = resources/font/type1/l.png
+m = resources/font/type1/m.png
+n = resources/font/type1/n.png
+o = resources/font/type1/o.png
+p = resources/font/type1/p.png
+q = resources/font/type1/q.png
+r = resources/font/type1/r.png
+s = resources/font/type1/s.png
+t = resources/font/type1/t.png
+u = resources/font/type1/u.png
+v = resources/font/type1/v.png
+w = resources/font/type1/w.png
+x = resources/font/type1/x.png
+y = resources/font/type1/y.png
+z = resources/font/type1/z.png
+
+# numerals
+
+0 = resources/font/type1/0.png
+1 = resources/font/type1/1.png
+2 = resources/font/type1/2.png
+3 = resources/font/type1/3.png
+4 = resources/font/type1/4.png
+5 = resources/font/type1/5.png
+6 = resources/font/type1/6.png
+7 = resources/font/type1/7.png
+8 = resources/font/type1/8.png
+9 = resources/font/type1/9.png
+
+# punctuation
+
+. = resources/font/type1/period.png
+, = resources/font/type1/comma.png
+: = resources/font/type1/colon.png
+/ = resources/font/type1/slash.png
+! = resources/font/type1/exclamation.png
+? = resources/font/type1/question.png
+> = resources/font/type1/cursor.png
+
+# Temporary: What to do about the space character?
+_ = resources/font/type1/space.png

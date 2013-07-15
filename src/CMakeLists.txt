@@ -1,0 +1,100 @@
+set(GAME_SRC
+all.h
+Array2D.h
+Audio.cpp
+Audio.h
+AudioSamples.h
+CastleDetect.cpp
+CastleDetect.h
+Config.cpp
+Config.h
+Dispatcher.cpp
+Dispatcher.h
+DispatchHandler.cpp
+DispatchHandler.h
+GameContext.cpp
+GameContext.h
+GameFont.cpp
+GameFont.h
+GameObject.cpp
+GameObject.h
+GameSettings.cpp
+GameSettings.h
+Graphics.cpp
+Graphics.h
+Level.cpp
+LevelFactory.cpp
+LevelFactory.h
+LevelFileParser.cpp
+LevelFileParser.h
+LevelFileReader.cpp
+LevelFileReader.h
+LevelFileReaderPng.cpp
+LevelFileReaderPng.h
+Level.h
+LevelPiece.h
+Log.cpp
+Log.h
+Main.cpp
+MapFileReader.cpp
+MapFileReader.h
+MoveDirection.h
+Sprite.cpp
+Sprite.h
+SpriteMapFactory.cpp
+SpriteMapFactory.h
+SpriteMap.h
+TrailSprites.h
+Universe.cpp
+Universe.h
+Utilities.cpp
+Utilities.h
+World.cpp
+World.h
+)
+
+Find_Package(SDL REQUIRED)
+Find_Package(SDL_image REQUIRED)
+Find_Package(SDL_mixer REQUIRED)
+Find_Package(OpenGL REQUIRED)
+
+set(CFLAGS
+    -D_VERSION=\"${VERSION}\"
+    -D_INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"
+    -D_SOURCE_ROOT_DIR=\"${CMAKE_SOURCE_DIR}\"
+    -g
+)
+
+if (NOT DEBUG)
+    set(CFLAGS
+        ${CFLAGS}
+        -O2
+    )    
+endif ()
+
+include_directories(${OPENGL_INCLUDE_DIRS} ${SDL_INCLUDE_DIR})
+message("sdl dirs " ${SDL_INCLUDE_DIR})
+link_directories()
+add_definitions(${CFLAGS})
+
+add_executable(escarabajo ${GAME_SRC})
+target_link_libraries(escarabajo ${OPENGL_LIBRARIES} ${GL_LIBRARY} ${SDL_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLMIXER_LIBRARY})
+
+add_custom_command(
+    TARGET
+        escarabajo
+    POST_BUILD
+    COMMAND 
+        ${CMAKE_COMMAND} -E copy escarabajo ${CMAKE_SOURCE_DIR}/
+)
+
+
+
+# For make clean.
+set_property(
+    DIRECTORY ..
+    APPEND
+    PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
+        escarabajo
+)
+

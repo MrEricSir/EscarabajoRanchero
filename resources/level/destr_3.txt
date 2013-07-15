@@ -1,0 +1,92 @@
+[Structure]
+# . = empty
+# w = wall
+# s = start
+# f = exit
+# n = normal castle
+# 1-9 = ordered castle 1-9
+# c = weak castle (one required)
+# a = wall for weak castle
+
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwww..........................wwwwwwwwwwwwwwww
+wwwwwwwwwww..........................wwwwwwwwwwwwwwww
+wwwwwwwwwww..........................wwwwwwwwwwwwwwww
+wwwwwwwwwww..........................wwwwwwwwwwwwwwww
+wwwwwwwwwww........caaaaaaaaaaaa.....wwwwwwwwwwwwwwww
+wwwwwwwwwww........aaaaaaaaaaaaa.....wwwwwwwwwwwwwwww
+wwwwwwwwwww........aaaaaaaaaaaaa.....wwwwwwwwwwwwwwww
+wwwwwwwwwww.....................................wwwww
+wwwwwwwwwww..........nwww.nwww.......wwwwww.....wwwww
+wwwwwwwwwww..........wwww.wwww.......wwwwwww...wwwwww
+wwwwwwwwwww..........wwww.wwww.......wwwwwww...wwwwww
+wwwwwwwwwwwwwww......................wwwwwww...wwwwww
+wwwwwwwwwwwwwww......................wwwwwwww.wwwwwww
+wwwwwwwwwwwwwww......................wwwwwwww.wwwwwww
+wwwwwwwwwwwwwwwwwwwwwww.....wwwwwwwwwwwwwwwww.wwwwwww
+wwwwwwwwwwwwwwwwwwwwwwww...wwwwwwwwwwwwwwwwwwswwwwwww
+wwwwwwwwwwwwwwwwwwwwwwww...wwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwww...wwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwww.wwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwww.wwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwww.wwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwfwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+
+[Sprites]
+# . = empty
+# w = wall
+# s = start
+# f = exit
+# K = normal castle
+# 1-9 = ordered castle 1-9
+# C = weak castle
+
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwww..........................wwwwwwwwwwwwwwww
+wwwwwwwwwww..........................wwwwwwwwwwwwwwww
+wwwwwwwwwww..........................wwwwwwwwwwwwwwww
+wwwwwwwwwww..........................wwwwwwwwwwwwwwww
+wwwwwwwwwww........CCCCCCCCCCCCC.....wwwwwwwwwwwwwwww
+wwwwwwwwwww........CCCCCCCCCCCCC.....wwwwwwwwwwwwwwww
+wwwwwwwwwww........CCCCCCCCCCCCC.....wwwwwwwwwwwwwwww
+wwwwwwwwwww.....................................wwwww
+wwwwwwwwwww..........KKKK.KKKK.......wwwwww.....wwwww
+wwwwwwwwwww..........KKKK.KKKK.......wwwwwww...wwwwww
+wwwwwwwwwww..........KKKK.KKKK.......wwwwwww...wwwwww
+wwwwwwwwwwwwwww......................wwwwwww...wwwwww
+wwwwwwwwwwwwwww......................wwwwwwww.wwwwwww
+wwwwwwwwwwwwwww......................wwwwwwww.wwwwwww
+wwwwwwwwwwwwwwwwwwwwwww.....wwwwwwwwwwwwwwwww.wwwwwww
+wwwwwwwwwwwwwwwwwwwwwwww...wwwwwwwwwwwwwwwwwwswwwwwww
+wwwwwwwwwwwwwwwwwwwwwwww...wwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwww...wwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwww.wwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwww.wwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwww.wwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwfwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
