@@ -9,7 +9,7 @@ namespace Escarabajo
 class Log
 {
 public:
-	static void write( std::string s );
+    static void write( std::string s );
 };
 
 }

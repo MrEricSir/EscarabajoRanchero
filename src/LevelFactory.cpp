@@ -10,47 +10,47 @@ extern string LevelFactory::previousSpriteMapFilename;
 
 Level* LevelFactory::load( string filename )
 {
-	Level* level = NULL;
+    Level* level = NULL;
 
-	if ( Utilities::toLower( filename ).find( ".png" ) != string::npos )
-	{
-		// Loads a png level.
-		LevelFileReaderPng reader( filename );
-		LevelFileParser parser( reader, &spriteMap );
+    if ( Utilities::toLower( filename ).find( ".png" ) != string::npos )
+    {
+        // Loads a png level.
+        LevelFileReaderPng reader( filename );
+        LevelFileParser parser( reader, &spriteMap );
 
-		level = parser.parse();
-	}
-	else
-	{
-		// Loads an old-school txt file level.
-		LevelFileReader reader( filename );
-		LevelFileParser parser( reader, &spriteMap );
+        level = parser.parse();
+    }
+    else
+    {
+        // Loads an old-school txt file level.
+        LevelFileReader reader( filename );
+        LevelFileParser parser( reader, &spriteMap );
 
-		level = parser.parse();
-	}
+        level = parser.parse();
+    }
 
-	return level;
+    return level;
 }
 
 void LevelFactory::loadSpriteMap( string filename )
 {
-	if ( filename == previousSpriteMapFilename )
-	{
-		// Oh, we already loaded this one.  KTHNXBYE.
-		return;
-	}
+    if ( filename == previousSpriteMapFilename )
+    {
+        // Oh, we already loaded this one.  KTHNXBYE.
+        return;
+    }
 
-	spriteMap = SpriteMapFactory::load( filename );
+    spriteMap = SpriteMapFactory::load( filename );
 
-	// Okay, well that worked out rather nicely.
-	// Remember our filename so we only load when we
-	// reeeeeaaly need to.
-	previousSpriteMapFilename = filename;
+    // Okay, well that worked out rather nicely.
+    // Remember our filename so we only load when we
+    // reeeeeaaly need to.
+    previousSpriteMapFilename = filename;
 }
 
 
 Sprite* LevelFactory::getSprite( char name )
 {
-	return &spriteMap[name];
+    return &spriteMap[name];
 }
 

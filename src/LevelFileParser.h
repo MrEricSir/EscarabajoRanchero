@@ -20,22 +20,22 @@ class LevelFileParser
 
 public:
 
-	// Sets the level file reader.
-	LevelFileParser( LevelFileReader& _reader, SpriteMap* _spriteMap );
+    // Sets the level file reader.
+    LevelFileParser( LevelFileReader& _reader, SpriteMap* _spriteMap );
 
-	// Sets the level file reader.
-	void setLevelFileReader( LevelFileReader& reader );
+    // Sets the level file reader.
+    void setLevelFileReader( LevelFileReader& reader );
 
-	void setSpriteMap( SpriteMap* spriteMap );
+    void setSpriteMap( SpriteMap* spriteMap );
 
-	// Parses the level.
-	Level* parse();
+    // Parses the level.
+    Level* parse();
 
 private:
 
-	LevelFileReader& reader;
+    LevelFileReader& reader;
 
-	SpriteMap* spriteMap;
+    SpriteMap* spriteMap;
 
 };
 

@@ -21,32 +21,32 @@ namespace Escarabajo
 class LevelUnit
 {
 public:
-	LevelUnit()
-	{
-		piece = EMPTY;
-		acceptTop = true;
-		acceptBottom = true;
-		acceptLeft = true;
-		acceptRight = true;
-		trailChar = TRAIL_NONE;
-	}
+    LevelUnit()
+    {
+        piece = EMPTY;
+        acceptTop = true;
+        acceptBottom = true;
+        acceptLeft = true;
+        acceptRight = true;
+        trailChar = TRAIL_NONE;
+    }
 
-	void makeSolid()
-	{
-		acceptTop = false;
-		acceptBottom = false;
-		acceptLeft = false;
-		acceptRight = false;
-	}
+    void makeSolid()
+    {
+        acceptTop = false;
+        acceptBottom = false;
+        acceptLeft = false;
+        acceptRight = false;
+    }
 
-	LevelPiece piece;
+    LevelPiece piece;
 
-	char trailChar;
+    char trailChar;
 
-	bool acceptTop;
-	bool acceptBottom;
-	bool acceptRight;
-	bool acceptLeft;
+    bool acceptTop;
+    bool acceptBottom;
+    bool acceptRight;
+    bool acceptLeft;
 };
 
 /**
@@ -57,249 +57,249 @@ class Level
 
 public:
 
-	/**
-	 * Clears memory, does not load level.
-	 */
-	Level();
+    /**
+     * Clears memory, does not load level.
+     */
+    Level();
 
-	/**
-	 * Creates the level, width and height
-	 * in terms of the number of pieces.
-	 */
-	Level( int width, int height );
-
-
-	/**
-	 * Removes any data.
-	 */
-	~Level();
-
-	/**
-	 * Sets a reference to the background sprite.
-	 */
-	void setBackgroundSprite( Sprite* s );
-
-	/**
-	 * Sets a piece for a given location.
-	 * Note: level must be initialized for this to work!
-	 */
-	void setPiece( const LevelPiece& p, const int& x, const int& y );
-
-	/**
-	 * Gets a piece for a given location.
-	 */
-	LevelPiece getPiece( const int& x, const int& y );
-
-	/**
-	 * True if the unit is a snake.
-	 */
-	inline LevelPiece getPiece9( const int& sx, const int& sy )
-	{
-		LevelPiece test = snakeArray->get( sx, sy );
-		if ( test != EMPTY )
-		{
-			return test;
-		}
-
-		int dx = floor( (double)sx / 3.0 );
-		int dy = floor( (double)sy / 3.0 );
-		return levelArray->get( dx, dy ).piece;
-	}
-
-	/**
-	 * Gets a piece with wrap-around.
-	 */
-	LevelPiece getPieceWithWrap( int x, int y );
-
-	/**
-	 * Set the starting position.
-	 */
-	void setStartingPosition( const int& x, const int& y );
-
-	/**
-	 * Gets the starting X coordinate.
-	 */
-	int getStartingX();
-
-	/**
-	 * Gets the starting Y coordinate.
-	 */
-	int getStartingY();
-
-	/**
-	 * Sets a sprite for a given location.
-	 * Note: level must be initialized for this to work!
-	 */
-	void setSprite( Sprite* s, const int& x, const int& y );
-
-	/**
-	 * Draws the level.
-	 */
-	void draw();
+    /**
+     * Creates the level, width and height
+     * in terms of the number of pieces.
+     */
+    Level( int width, int height );
 
 
-	// Gets level width.
-	int getWidth();
+    /**
+     * Removes any data.
+     */
+    ~Level();
 
-	// Gets level height.
-	int getHeight();
+    /**
+     * Sets a reference to the background sprite.
+     */
+    void setBackgroundSprite( Sprite* s );
 
-	inline int getWidth9() { return width * 3; }
-	inline int getHeight9() { return height * 3; }
+    /**
+     * Sets a piece for a given location.
+     * Note: level must be initialized for this to work!
+     */
+    void setPiece( const LevelPiece& p, const int& x, const int& y );
 
-	// Gets the number of remaining castles.
-	inline int getRemainingCastles()
-	{
-		return remainingCastles;
-	}
+    /**
+     * Gets a piece for a given location.
+     */
+    LevelPiece getPiece( const int& x, const int& y );
 
-	// Sets the number of remaining castles.
-	inline void setRemainingCastles( int c )
-	{
-		remainingCastles = c;
-		Log::write( "Remaining castles: " + Utilities::longToString( c ) );
-		if ( !remainingCastles )
-		{
-			openExit();
-		}
-	}
+    /**
+     * True if the unit is a snake.
+     */
+    inline LevelPiece getPiece9( const int& sx, const int& sy )
+    {
+        LevelPiece test = snakeArray->get( sx, sy );
+        if ( test != EMPTY )
+        {
+            return test;
+        }
 
-	// Gets the total number of castles.
-	inline int getNumCastles()
-	{
-		return numCastles;
-	}
+        int dx = floor( (double)sx / 3.0 );
+        int dy = floor( (double)sy / 3.0 );
+        return levelArray->get( dx, dy ).piece;
+    }
 
-	// Sets the total number of castles.
-	inline void setNumCastles( int c )
-	{
-		numCastles = c;
-	}
+    /**
+     * Gets a piece with wrap-around.
+     */
+    LevelPiece getPieceWithWrap( int x, int y );
 
-	// Check if the tile can be moved to.
-	bool canMoveTo( int x, int y, MoveDirection dir );
+    /**
+     * Set the starting position.
+     */
+    void setStartingPosition( const int& x, const int& y );
 
-	// Sets the accept dirs.
-	void setAcceptDirections( int x, int y, bool acceptTop, bool acceptBottom, bool acceptRight, bool acceptLeft );
+    /**
+     * Gets the starting X coordinate.
+     */
+    int getStartingX();
 
-	// Makes a deep copy of the level.
-	Level* clone();
+    /**
+     * Gets the starting Y coordinate.
+     */
+    int getStartingY();
 
-	// Check whether the level is complete.
-	inline bool isComplete()
-	{
-		return complete;
-	}
+    /**
+     * Sets a sprite for a given location.
+     * Note: level must be initialized for this to work!
+     */
+    void setSprite( Sprite* s, const int& x, const int& y );
 
-	// Change complete/incomplete status.
-	void setComplete( bool c );
+    /**
+     * Draws the level.
+     */
+    void draw();
 
-	// Draws a trail piece for a given square and direction.
-	void drawSnake( int x, int y, MoveDirection direction );
 
-	// Moves the snake part way!
-	void partwaySnake( int x, int y, MoveDirection direction );
+    // Gets level width.
+    int getWidth();
 
-	inline int getRemainingFuel()
-	{
-		return fuelRemaining;
-	}
+    // Gets level height.
+    int getHeight();
 
-	inline void setRemainingFuel( int f )
-	{
-		if ( f > getFuelMax() )
-		{
-			f = getFuelMax();
-		}
-		fuelRemaining = f;
-	}
+    inline int getWidth9() { return width * 3; }
+    inline int getHeight9() { return height * 3; }
 
-	inline int getStartingFuel()
-	{
-		return fuelStarting;
-	}
+    // Gets the number of remaining castles.
+    inline int getRemainingCastles()
+    {
+        return remainingCastles;
+    }
 
-	inline int getFuelMax()
-	{
-		return LEVEL_MAX_FUEL;
-	}
+    // Sets the number of remaining castles.
+    inline void setRemainingCastles( int c )
+    {
+        remainingCastles = c;
+        Log::write( "Remaining castles: " + Utilities::longToString( c ) );
+        if ( !remainingCastles )
+        {
+            openExit();
+        }
+    }
 
-	inline void setStartingFuel( int f )
-	{
-		fuelStarting = f;
-	}
+    // Gets the total number of castles.
+    inline int getNumCastles()
+    {
+        return numCastles;
+    }
 
-	// Marks a snake as used.
-	void markSnakeUsed( int x, int y );
+    // Sets the total number of castles.
+    inline void setNumCastles( int c )
+    {
+        numCastles = c;
+    }
 
-	// Animates level sprites.
-	void animate();
+    // Check if the tile can be moved to.
+    bool canMoveTo( int x, int y, MoveDirection dir );
 
-	// Opens the exit(s).
-	void openExit();
+    // Sets the accept dirs.
+    void setAcceptDirections( int x, int y, bool acceptTop, bool acceptBottom, bool acceptRight, bool acceptLeft );
 
-	// Elapsed time since start of level.
-	int getElapsedTime();
+    // Makes a deep copy of the level.
+    Level* clone();
+
+    // Check whether the level is complete.
+    inline bool isComplete()
+    {
+        return complete;
+    }
+
+    // Change complete/incomplete status.
+    void setComplete( bool c );
+
+    // Draws a trail piece for a given square and direction.
+    void drawSnake( int x, int y, MoveDirection direction );
+
+    // Moves the snake part way!
+    void partwaySnake( int x, int y, MoveDirection direction );
+
+    inline int getRemainingFuel()
+    {
+        return fuelRemaining;
+    }
+
+    inline void setRemainingFuel( int f )
+    {
+        if ( f > getFuelMax() )
+        {
+            f = getFuelMax();
+        }
+        fuelRemaining = f;
+    }
+
+    inline int getStartingFuel()
+    {
+        return fuelStarting;
+    }
+
+    inline int getFuelMax()
+    {
+        return LEVEL_MAX_FUEL;
+    }
+
+    inline void setStartingFuel( int f )
+    {
+        fuelStarting = f;
+    }
+
+    // Marks a snake as used.
+    void markSnakeUsed( int x, int y );
+
+    // Animates level sprites.
+    void animate();
+
+    // Opens the exit(s).
+    void openExit();
+
+    // Elapsed time since start of level.
+    int getElapsedTime();
 
 private:
 
-	// Get a level unit w/ wrap.
-	LevelUnit getUnitWithWrap( int x, int y );
+    // Get a level unit w/ wrap.
+    LevelUnit getUnitWithWrap( int x, int y );
 
-	// Computes the given trail char.
-	char computeTrailChar( int x, int y, MoveDirection direction );
+    // Computes the given trail char.
+    char computeTrailChar( int x, int y, MoveDirection direction );
 
-	// Puts a snake somewhere...
-	void putSnakeAt( char trail, int x, int y );
+    // Puts a snake somewhere...
+    void putSnakeAt( char trail, int x, int y );
 
-	// Initialize variables.
-	void init();
+    // Initialize variables.
+    void init();
 
-	// Stores the level data.
-	Array2D<LevelUnit>* levelArray;
+    // Stores the level data.
+    Array2D<LevelUnit>* levelArray;
 
-	// Snake units.
-	Array2D<LevelPiece>* snakeArray;
+    // Snake units.
+    Array2D<LevelPiece>* snakeArray;
 
-	// Stores the sprite data.
-	Array2D<Sprite*>* spriteArray;
+    // Stores the sprite data.
+    Array2D<Sprite*>* spriteArray;
 
-	// Dimensions of our map, in terms
-	// of pieces.
-	int width;
-	int height;
+    // Dimensions of our map, in terms
+    // of pieces.
+    int width;
+    int height;
 
-	// True if level is complete, else false.
-	bool complete;
+    // True if level is complete, else false.
+    bool complete;
 
-	// Number of castles.
-	int numCastles;
+    // Number of castles.
+    int numCastles;
 
-	// Remaining castles.
-	int remainingCastles;
+    // Remaining castles.
+    int remainingCastles;
 
-	// Starting coordinates.
-	int startX;
-	int startY;
+    // Starting coordinates.
+    int startX;
+    int startY;
 
-	// Fuel remaining at the start of the level.
-	int fuelStarting;
+    // Fuel remaining at the start of the level.
+    int fuelStarting;
 
-	// Fuel remaining.
-	int fuelRemaining;
+    // Fuel remaining.
+    int fuelRemaining;
 
-	// Whether or not we left the starting position.
-	bool leftStartingPos;
+    // Whether or not we left the starting position.
+    bool leftStartingPos;
 
-	std::set<Sprite*> spriteList;
+    std::set<Sprite*> spriteList;
 
-	// Background sprite.
-	Sprite* background;
+    // Background sprite.
+    Sprite* background;
 
-	// Bottom area.
-	Sprite* bottom;
+    // Bottom area.
+    Sprite* bottom;
 
-	unsigned timer;
+    unsigned timer;
 
 };
 

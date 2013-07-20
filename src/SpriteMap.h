@@ -7,7 +7,7 @@
 namespace Escarabajo
 {
 
-	typedef std::map<char, Sprite> SpriteMap;
+    typedef std::map<char, Sprite> SpriteMap;
 
 }
 

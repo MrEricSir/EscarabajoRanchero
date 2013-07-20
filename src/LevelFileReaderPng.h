@@ -21,13 +21,13 @@ class LevelFileReaderPng : public LevelFileReader
 {
 public:
 
-	LevelFileReaderPng();
+    LevelFileReaderPng();
 
-		// Loads a file.
-	LevelFileReaderPng( std::string filename );
+        // Loads a file.
+    LevelFileReaderPng( std::string filename );
 
-	// Loads a file.
-	bool load( std::string filename );
+    // Loads a file.
+    bool load( std::string filename );
 
 
 };

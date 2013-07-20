@@ -8,7 +8,7 @@ DispatchHandler::DispatchHandler( unsigned intervalMs ) : intervalMs(intervalMs)
 
 DispatchHandler::~DispatchHandler()
 {
-	// do nothing
+    // do nothing
 }
 
 
@@ -17,7 +17,7 @@ void DispatchHandler::tick() {}
 
 unsigned DispatchHandler::getInterval()
 {
-	return intervalMs;
+    return intervalMs;
 }
 
 void DispatchHandler::pressLeft() {}

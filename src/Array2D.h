@@ -37,101 +37,101 @@ class Array2D
 {
 public:
 
-	Array2D()
-	{
-		data = NULL;
-		width = 0;
-		height = 0;
-	}
+    Array2D()
+    {
+        data = NULL;
+        width = 0;
+        height = 0;
+    }
 
-	Array2D( const int& width, const int& height )
-	{
-		data = NULL;
-		allocate( width, height );
-	}
+    Array2D( const int& width, const int& height )
+    {
+        data = NULL;
+        allocate( width, height );
+    }
 
-	~Array2D()
-	{
-		deallocate();
-	}
+    ~Array2D()
+    {
+        deallocate();
+    }
 
-	T get( const int& x, const int& y )
-	{
-		return data[y][x];
-	}
+    T get( const int& x, const int& y )
+    {
+        return data[y][x];
+    }
 
-	void set( const T& t, const int& x, const int& y )
-	{
-		data[y][x] = t;
-	}
+    void set( const T& t, const int& x, const int& y )
+    {
+        data[y][x] = t;
+    }
 
-	void setAll( const T& t )
-	{
-		for ( int y = 0; y < height; y++ )
-		{
-			for ( int x = 0; x < width; x++ )
-			{
-				data[y][x] = t;
-			}
-		}
-	}
+    void setAll( const T& t )
+    {
+        for ( int y = 0; y < height; y++ )
+        {
+            for ( int x = 0; x < width; x++ )
+            {
+                data[y][x] = t;
+            }
+        }
+    }
 
-	int getWidth()
-	{
-		return width;
-	}
+    int getWidth()
+    {
+        return width;
+    }
 
-	int getHeight()
-	{
-		return height;
-	}
+    int getHeight()
+    {
+        return height;
+    }
 
 private:
 
-	void allocate( const int& width, const int& height )
-	{
-		if ( NULL != data )
-		{
-			// Must deallocate first.
-			deallocate();
-		}
+    void allocate( const int& width, const int& height )
+    {
+        if ( NULL != data )
+        {
+            // Must deallocate first.
+            deallocate();
+        }
 
-		// Remember dimensions.
-		this->width = width;
-		this->height = height;
+        // Remember dimensions.
+        this->width = width;
+        this->height = height;
 
-		// Allocate.
-		data = new T*[height];
-		for ( int i = 0; i < height; i++ )
-		{
-			data[i] = new T[width];
-		}
-	}
+        // Allocate.
+        data = new T*[height];
+        for ( int i = 0; i < height; i++ )
+        {
+            data[i] = new T[width];
+        }
+    }
 
-	void deallocate()
-	{
-		if ( NULL == data )
-		{
-			// Nothing to do.
-			return;
-		}
+    void deallocate()
+    {
+        if ( NULL == data )
+        {
+            // Nothing to do.
+            return;
+        }
 
-		// Free the memory.
-		for ( int i = 0; i < height; i++ )
-		{
-			delete[] data[i];
-		}
-		delete[] data;
+        // Free the memory.
+        for ( int i = 0; i < height; i++ )
+        {
+            delete[] data[i];
+        }
+        delete[] data;
 
-		// Reset.
-		width = 0;
-		height = 0;
-		data = NULL;
-	}
+        // Reset.
+        width = 0;
+        height = 0;
+        data = NULL;
+    }
 
-	int width;
-	int height;
-	T** data;
+    int width;
+    int height;
+    T** data;
 
 };
 

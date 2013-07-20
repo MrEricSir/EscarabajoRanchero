@@ -5,5 +5,5 @@ using namespace std;
 
 void Log::write( string s )
 {
-	cout << s << endl;
+    cout << s << endl;
 }

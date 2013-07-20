@@ -10,21 +10,21 @@ namespace Escarabajo
 class Dispatcher
 {
 public:
-	Dispatcher();
-	virtual ~Dispatcher();
+    Dispatcher();
+    virtual ~Dispatcher();
 
-	void setDispatchHandler( DispatchHandler* dh );
-	void unsetHandler();
+    void setDispatchHandler( DispatchHandler* dh );
+    void unsetHandler();
 
-	void mainLoop();
+    void mainLoop();
 
 private:
 
-	void doTimer();
+    void doTimer();
 
-	SDL_TimerID timerID;
+    SDL_TimerID timerID;
 
-	DispatchHandler* myHandler;
+    DispatchHandler* myHandler;
 
 };
 

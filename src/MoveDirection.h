@@ -3,11 +3,11 @@
 
 enum MoveDirection
 {
-	NONE,
-	MOVE_UP,
-	MOVE_DOWN,
-	MOVE_LEFT,
-	MOVE_RIGHT
+    NONE,
+    MOVE_UP,
+    MOVE_DOWN,
+    MOVE_LEFT,
+    MOVE_RIGHT
 };
 
 

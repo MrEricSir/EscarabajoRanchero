@@ -18,68 +18,68 @@ extern int Config::levelHeight;
 
 void Config::init()
 {
-	screenWidth = 640;
-	screenHeight = 480;
+    screenWidth = 640;
+    screenHeight = 480;
 
-	widthOfLevelPiece = 15;
-	heightOfLevelPiece = 15;
+    widthOfLevelPiece = 15;
+    heightOfLevelPiece = 15;
 
-	widthOfLevelPiece9 = 5;
-	heightOfLevelPiece9 = 5;
+    widthOfLevelPiece9 = 5;
+    heightOfLevelPiece9 = 5;
 
-	widthOfFontPiece = 6;
+    widthOfFontPiece = 6;
 
-	zoomFactor = 3;
+    zoomFactor = 3;
 
-	animationStep = 3;
+    animationStep = 3;
 
-	levelWidth = 21;
-	levelHeight = 15;
+    levelWidth = 21;
+    levelHeight = 15;
 }
 
 int Config::getScreenWidth()
 {
-	return levelWidth * widthOfLevelPiece * zoomFactor;
+    return levelWidth * widthOfLevelPiece * zoomFactor;
 }
 
 int Config::getScreenHeight()
 {
-	return ( levelHeight * heightOfLevelPiece + heightOfLevelPiece ) * zoomFactor;
+    return ( levelHeight * heightOfLevelPiece + heightOfLevelPiece ) * zoomFactor;
 }
 
 double Config::getZoomFactor()
 {
-	return zoomFactor;
+    return zoomFactor;
 }
 
 
 int Config::getWidthOfLevelPiece()
 {
-	return widthOfLevelPiece;
+    return widthOfLevelPiece;
 }
 
 int Config::getHeightOfLevelPiece()
 {
-	return heightOfLevelPiece;
+    return heightOfLevelPiece;
 }
 
 int Config::getWidthOfLevelPiece9()
 {
-	return widthOfLevelPiece9;
+    return widthOfLevelPiece9;
 }
 
 int Config::getHeightOfLevelPiece9()
 {
-	return heightOfLevelPiece9;
+    return heightOfLevelPiece9;
 }
 
 int Config::getWidthOfFontPiece()
 {
-	return widthOfFontPiece;
+    return widthOfFontPiece;
 }
 
 int Config::getAnimationStep()
 {
-	return animationStep;
+    return animationStep;
 }
 

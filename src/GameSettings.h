@@ -4,10 +4,10 @@
 #include "all.h"
 #include "MapFileReader.h"
 
-#define SETTING_WORLD_LAST	"WorldLast"
-#define SETTING_WORLD_MAX	"WorldMax"
-#define SETTING_LEVEL_LAST	"LevelLast"
-#define SETTING_LEVEL_MAX	"LevelMax"
+#define SETTING_WORLD_LAST    "WorldLast"
+#define SETTING_WORLD_MAX    "WorldMax"
+#define SETTING_LEVEL_LAST    "LevelLast"
+#define SETTING_LEVEL_MAX    "LevelMax"
 
 namespace Escarabajo
 {
@@ -18,39 +18,39 @@ class GameSettings
 {
 public:
 
-	// Loads settings.
-	static bool load();
+    // Loads settings.
+    static bool load();
 
-	// Saves settings.
-	static bool save();
+    // Saves settings.
+    static bool save();
 
-	static int getMaxWorld();
-	static int getMaxLevel();
+    static int getMaxWorld();
+    static int getMaxLevel();
 
-	static int getLastWorld();
-	static int getLastLevel();
+    static int getLastWorld();
+    static int getLastLevel();
 
-	static void setLastWorld( int w );
-	static void setLastLevel( int l );
+    static void setLastWorld( int w );
+    static void setLastLevel( int l );
 
 private:
 
-	// Populates initial data.
-	static void init();
+    // Populates initial data.
+    static void init();
 
-	static std::string getFilename();
+    static std::string getFilename();
 
-	static SettingMap settings;
+    static SettingMap settings;
 
-	// Parser for loading setting map.
-	class SettingMapParser : public MapFileReader
-	{
-	public:
-		SettingMapParser( SettingMap* sm );
-		virtual void section( std::string sectionName );
-		virtual void pair( std::string name, std::string value );
-		SettingMap* sm;
-	};
+    // Parser for loading setting map.
+    class SettingMapParser : public MapFileReader
+    {
+    public:
+        SettingMapParser( SettingMap* sm );
+        virtual void section( std::string sectionName );
+        virtual void pair( std::string name, std::string value );
+        SettingMap* sm;
+    };
 
 };
 

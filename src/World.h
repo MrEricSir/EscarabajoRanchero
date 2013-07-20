@@ -20,56 +20,56 @@ class World
 
 public:
 
-	World();
+    World();
 
-	~World();
+    ~World();
 
-	void setMusicFilename( std::string filename );
+    void setMusicFilename( std::string filename );
 
-	void setBackgroundFilename( std::string filename );
+    void setBackgroundFilename( std::string filename );
 
-	void addLevel( Level* l );
+    void addLevel( Level* l );
 
-	Level* getCurrentLevel();
+    Level* getCurrentLevel();
 
-	std::string getMusicFilename();
+    std::string getMusicFilename();
 
-	std::string getBackgroundFilename();
+    std::string getBackgroundFilename();
 
-	Sprite* getBackgroundSprite();
+    Sprite* getBackgroundSprite();
 
-	Level* getLevel( int num );
+    Level* getLevel( int num );
 
-	// Sets the current level.
-	void setCurrentLevelNum( int num );
+    // Sets the current level.
+    void setCurrentLevelNum( int num );
 
-	int getCurrentLevelNum();
+    int getCurrentLevelNum();
 
-	// Gets the number of levels.
-	int getNumLevels();
+    // Gets the number of levels.
+    int getNumLevels();
 
-	void setName( std::string n );
+    void setName( std::string n );
 
-	std::string getName();
+    std::string getName();
 
 private:
 
-	std::string name;
+    std::string name;
 
-	// Filename of our musics.
-	std::string musicFilename;
+    // Filename of our musics.
+    std::string musicFilename;
 
-	// Filename of our background image.
-	std::string backgroundFilename;
+    // Filename of our background image.
+    std::string backgroundFilename;
 
-	// Sweet sweet levelaid.
-	std::vector<Level*> levels;
+    // Sweet sweet levelaid.
+    std::vector<Level*> levels;
 
-	// Current level.
-	int currentLevelNum;
+    // Current level.
+    int currentLevelNum;
 
-	// Sprite that represents the background.
-	Sprite* background;
+    // Sprite that represents the background.
+    Sprite* background;
 
 };
 

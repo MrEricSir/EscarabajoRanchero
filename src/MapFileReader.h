@@ -16,14 +16,14 @@ class MapFileReader
 {
 public:
 
-	// Loads a map file.  Returns true on success.
-	bool load( std::string filename );
+    // Loads a map file.  Returns true on success.
+    bool load( std::string filename );
 
-	// Override this to get a [section] header.
-	virtual void section( std::string sectionName ){}
+    // Override this to get a [section] header.
+    virtual void section( std::string sectionName ){}
 
-	// Override this to get a name = value pair.
-	virtual void pair( std::string name, std::string value ){}
+    // Override this to get a name = value pair.
+    virtual void pair( std::string name, std::string value ){}
 
 };
 

@@ -12,25 +12,25 @@ class Graphics
 {
 public:
 
-	// Sets the size of the window.
-	void setSize( int width, int height );
+    // Sets the size of the window.
+    void setSize( int width, int height );
 
-	// Init the graphics.
-	void init();
+    // Init the graphics.
+    void init();
 
-	void setWindowTitle( std::string t );
+    void setWindowTitle( std::string t );
 
-	// Destroy the graphics.
-	void destroy();
+    // Destroy the graphics.
+    void destroy();
 
-	// Draw frame.
-	void beginRendering();
-	void endRendering();
+    // Draw frame.
+    void beginRendering();
+    void endRendering();
 
 private:
-	std::string title;
-	int screenWidth;
-	int screenHeight;
+    std::string title;
+    int screenWidth;
+    int screenHeight;
 
 };
 

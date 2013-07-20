@@ -18,24 +18,24 @@ class LevelFileReader
 {
 public:
 
-	LevelFileReader();
+    LevelFileReader();
 
-	// Loads a file.
-	LevelFileReader( std::string filename );
+    // Loads a file.
+    LevelFileReader( std::string filename );
 
-	// Loads a file.
-	virtual bool load( std::string filename );
+    // Loads a file.
+    virtual bool load( std::string filename );
 
-	// Checks if a section exists.
-	bool hasSection( std::string sectionName );
+    // Checks if a section exists.
+    bool hasSection( std::string sectionName );
 
-	// Gets a section as a string vector.
-	virtual std::vector<std::string> getSection( std::string sectionName );
+    // Gets a section as a string vector.
+    virtual std::vector<std::string> getSection( std::string sectionName );
 
 protected:
 
-	// Section map.
-	std::map<std::string, std::vector<std::string> > sections;
+    // Section map.
+    std::map<std::string, std::vector<std::string> > sections;
 
 };
 

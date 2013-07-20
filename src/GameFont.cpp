@@ -9,37 +9,37 @@ using namespace Escarabajo;
  */
 void GameFont::load( std::string filename )
 {
-	spriteMap = SpriteMapFactory::load( filename );
+    spriteMap = SpriteMapFactory::load( filename );
 }
 
 void GameFont::draw( int x, int y, char c )
 {
-	draw( x, y, defaultZ, c );
+    draw( x, y, defaultZ, c );
 }
 
 void GameFont::draw( int x, int y, std::string c )
 {
-	draw( x, y, defaultZ, c );
+    draw( x, y, defaultZ, c );
 }
 
 void GameFont::draw( int x, int y, int z, char c )
 {
-	SpriteMap::iterator iterator = spriteMap.find( c );
-	if ( iterator != spriteMap.end() )
-	{
-		iterator->second.draw( x, y, z );
-	}
+    SpriteMap::iterator iterator = spriteMap.find( c );
+    if ( iterator != spriteMap.end() )
+    {
+        iterator->second.draw( x, y, z );
+    }
 }
 
 /** Draws a string.
  */
 void GameFont::draw( int x, int y, int z, std::string c )
 {
-	size_t i = 0;
-	while ( i < c.length() )
-	{
-		draw( x, y, z, c[i] );
-		x += Config::getWidthOfFontPiece();
-		i++;
-	}
+    size_t i = 0;
+    while ( i < c.length() )
+    {
+        draw( x, y, z, c[i] );
+        x += Config::getWidthOfFontPiece();
+        i++;
+    }
 }

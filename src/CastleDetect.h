@@ -15,76 +15,76 @@ namespace Escarabajo
 class CastleDetect
 {
 public:
-	virtual ~CastleDetect();
-	CastleDetect( Level* l );
+    virtual ~CastleDetect();
+    CastleDetect( Level* l );
 
-	/**
-	 * Resets the detection before each iteration.
-	 */
-	void resetDetection();
+    /**
+     * Resets the detection before each iteration.
+     */
+    void resetDetection();
 
-	/**
-	 * Sets the maximum area size.
-	 */
-	void setMaxArea( int a );
+    /**
+     * Sets the maximum area size.
+     */
+    void setMaxArea( int a );
 
-	/**
-	 * Run detection on the following coordinate.
-	 * If true is returned, there is exactly one
-	 * castle in the designated area.
-	 * Call getMask() to retrieve the area and
-	 * getUsedSnakes() to retrieve the used snakes.
-	 */
-	bool runDetection( int x, int y );
+    /**
+     * Run detection on the following coordinate.
+     * If true is returned, there is exactly one
+     * castle in the designated area.
+     * Call getMask() to retrieve the area and
+     * getUsedSnakes() to retrieve the used snakes.
+     */
+    bool runDetection( int x, int y );
 
-	/**
-	 * Gets the mask from the previous detection.
-	 * The value of this function is only valid when
-	 * runDetection() returned true on the previous
-	 * invocation.
-	 */
-	Array2D<bool>* getMask();
+    /**
+     * Gets the mask from the previous detection.
+     * The value of this function is only valid when
+     * runDetection() returned true on the previous
+     * invocation.
+     */
+    Array2D<bool>* getMask();
 
-	// Call this after detection to merge any used snakes
-	// that were cached back in.
-	void mergeUsedSnakes();
+    // Call this after detection to merge any used snakes
+    // that were cached back in.
+    void mergeUsedSnakes();
 
 private :
 
-	// Resets the area prior to detection.
-	void resetInternal();
+    // Resets the area prior to detection.
+    void resetInternal();
 
-	// Recursive detection routine.
-	bool detectRecursive( int testX, int testY );
+    // Recursive detection routine.
+    bool detectRecursive( int testX, int testY );
 
-	// Check edges for snakes.
-	bool checkSnakes( int x, int y );
+    // Check edges for snakes.
+    bool checkSnakes( int x, int y );
 
-	// Build edge mask.
-	void checkSnakeRecursive( int x, int y, Array2D<int>& edgeMask );
+    // Build edge mask.
+    void checkSnakeRecursive( int x, int y, Array2D<int>& edgeMask );
 
-	// Pointer to level.
-	Level* level;
+    // Pointer to level.
+    Level* level;
 
-	// Detection area mask.
-	// Corresponds with level dimensions.
-	// True is areas that were searched.
-	Array2D<bool>* mask;
+    // Detection area mask.
+    // Corresponds with level dimensions.
+    // True is areas that were searched.
+    Array2D<bool>* mask;
 
-	// Mask for used snake areas.
-	Array2D<bool>* usedSnakes;
+    // Mask for used snake areas.
+    Array2D<bool>* usedSnakes;
 
-	// Maximum area to search for a castle.
-	int maxArea;
+    // Maximum area to search for a castle.
+    int maxArea;
 
-	// Number of castles found.
-	int numCastles;
+    // Number of castles found.
+    int numCastles;
 
-	// Whether or not an area is bounded.
-	bool bounded;
+    // Whether or not an area is bounded.
+    bool bounded;
 
-	// Number of tiles found.
-	int numTiles;
+    // Number of tiles found.
+    int numTiles;
 
 };
 
