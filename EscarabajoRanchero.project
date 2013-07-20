@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="EscarabajoRanchero" InternalType="">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+  </Plugins>
+  <Description/>
+  <Dependencies/>
+  <VirtualDirectory Name="src">
+    <File Name="src/all.h"/>
+    <File Name="src/Array2D.h"/>
+    <File Name="src/Audio.cpp"/>
+    <File Name="src/Audio.h"/>
+    <File Name="src/AudioSamples.h"/>
+    <File Name="src/CastleDetect.cpp"/>
+    <File Name="src/CastleDetect.h"/>
+    <File Name="src/CMakeLists.txt"/>
+    <File Name="src/Config.cpp"/>
+    <File Name="src/Config.h"/>
+    <File Name="src/Dispatcher.cpp"/>
+    <File Name="src/Dispatcher.h"/>
+    <File Name="src/DispatchHandler.cpp"/>
+    <File Name="src/DispatchHandler.h"/>
+    <File Name="src/GameContext.cpp"/>
+    <File Name="src/GameContext.h"/>
+    <File Name="src/GameFont.cpp"/>
+    <File Name="src/GameFont.h"/>
+    <File Name="src/GameObject.cpp"/>
+    <File Name="src/GameObject.h"/>
+    <File Name="src/GameSettings.cpp"/>
+    <File Name="src/GameSettings.h"/>
+    <File Name="src/Graphics.cpp"/>
+    <File Name="src/Graphics.h"/>
+    <File Name="src/Level.cpp"/>
+    <File Name="src/Level.h"/>
+    <File Name="src/LevelFactory.cpp"/>
+    <File Name="src/LevelFactory.h"/>
+    <File Name="src/LevelFileParser.cpp"/>
+    <File Name="src/LevelFileParser.h"/>
+    <File Name="src/LevelFileReader.cpp"/>
+    <File Name="src/LevelFileReader.h"/>
+    <File Name="src/LevelFileReaderPng.cpp"/>
+    <File Name="src/LevelFileReaderPng.h"/>
+    <File Name="src/LevelPiece.h"/>
+    <File Name="src/Log.cpp"/>
+    <File Name="src/Log.h"/>
+    <File Name="src/Main.cpp"/>
+    <File Name="src/MapFileReader.cpp"/>
+    <File Name="src/MapFileReader.h"/>
+    <File Name="src/MoveDirection.h"/>
+    <File Name="src/Sprite.cpp"/>
+    <File Name="src/Sprite.h"/>
+    <File Name="src/SpriteMap.h"/>
+    <File Name="src/SpriteMapFactory.cpp"/>
+    <File Name="src/SpriteMapFactory.h"/>
+    <File Name="src/TrailSprites.h"/>
+    <File Name="src/Universe.cpp"/>
+    <File Name="src/Universe.h"/>
+    <File Name="src/Utilities.cpp"/>
+    <File Name="src/Utilities.h"/>
+    <File Name="src/World.cpp"/>
+    <File Name="src/World.h"/>
+  </VirtualDirectory>
+  <Settings Type="Dynamic Library">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Dynamic Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g" C_Options="-g" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="escarabajo" IntermediateDirectory="build" Command="./escarabajo" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(WorkspacePath)" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <Target Name="Configure">cmake ..</Target>
+        <RebuildCommand/>
+        <CleanCommand>make clean</CleanCommand>
+        <BuildCommand>make</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(WorkspacePath)/build</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Dynamic Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="" C_Options="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O2" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="escarabajo" IntermediateDirectory="build" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(ProjectPath)/escarabajo" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <Target Name="Configure">cmake ..</Target>
+        <RebuildCommand/>
+        <CleanCommand>make clean</CleanCommand>
+        <BuildCommand>make</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(WorkspacePath)/build</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>
