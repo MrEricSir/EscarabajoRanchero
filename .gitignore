@@ -1,2 +1,4 @@
 build/*
 escarabajo
+*.DS_Store
+
