@@ -23,12 +23,23 @@ A C++ compiler and CMake are required.  You will need the following libraries an
 On Ubuntu, these packages can be installed with:
 > sudo apt-get install build-essential cmake libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libgl1-mesa-dev
 
+On other systems, the SDL development packages can be found here:
+* http://www.libsdl.org/download-1.2.php
+* http://www.libsdl.org/projects/SDL_mixer/
+* http://www.libsdl.org/projects/SDL_image/
+
 The recommended way to build on *nix systems is as follows:
 > $ cd build
 >
 > $ cmake ..
 >
 > $ make
+
+A CodeLite 5 workspace is also provided.  The project will run the above steps for you.
+
+On Windows, Mingw32 is recommended.  CMake may not configure all settings and paths automatically, it's recommended to use CMake's GUI.
+Note that you'll need to run "mingw32-make" instead of just "make" (or modify the CodeLite project accordingly.)
+
 
 Running and installing
 ----------------------
