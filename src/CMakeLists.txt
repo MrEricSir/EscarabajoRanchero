@@ -85,12 +85,18 @@ add_executable(escarabajo ${GAME_SRC})
 target_link_libraries(escarabajo ${OPENGL_LIBRARIES} ${GL_LIBRARY} ${SDL_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLMIXER_LIBRARY})
 
 # Copy binary to project root.
+IF(WIN32)
+   set(BINARY_NAME escarabajo.exe)
+else()
+   set(BINARY_NAME escarabajo)
+endif()
+
 add_custom_command(
     TARGET
         escarabajo
     POST_BUILD
     COMMAND 
-        ${CMAKE_COMMAND} -E copy escarabajo ${CMAKE_SOURCE_DIR}/
+        ${CMAKE_COMMAND} -E copy ${BINARY_NAME} ${CMAKE_SOURCE_DIR}/
 )
 
 # For make clean.
