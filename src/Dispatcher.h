@@ -2,7 +2,8 @@
 #define DISPATCHER_H_
 
 #include "all.h"
-#include "DispatchHandler.h"
+#include "DispatchEventHandler.h"
+#include "DispatchKeyHandler.h"
 
 namespace Escarabajo
 {
@@ -13,8 +14,15 @@ public:
     Dispatcher();
     virtual ~Dispatcher();
 
-    void setDispatchHandler( DispatchHandler* dh );
-    void unsetHandler();
+    /**
+     * Sets/unsets the event handler (null to unset.)
+     */
+    void setEventHandler( DispatchEventHandler* dh );
+    
+    /**
+     * Sets/unsets the key handler (null to unset.)
+     */
+    void setKeyHandler( DispatchKeyHandler* dk );
 
     void mainLoop();
 
@@ -24,7 +32,8 @@ private:
 
     SDL_TimerID timerID;
 
-    DispatchHandler* myHandler;
+    DispatchEventHandler* eventHandler;
+    DispatchKeyHandler* keyHandler;
 
 };
 

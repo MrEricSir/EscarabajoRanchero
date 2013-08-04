@@ -11,7 +11,8 @@
 #include "Array2D.h"
 #include "MoveDirection.h"
 #include "Audio.h"
-#include "DispatchHandler.h"
+#include "DispatchEventHandler.h"
+#include "GameInput.h"
 
 namespace Escarabajo
 {
@@ -19,7 +20,7 @@ namespace Escarabajo
 class Input;
 class GameObject;
 
-class GameContext : public DispatchHandler
+class GameContext : public DispatchEventHandler
 {
 public:
 
@@ -98,34 +99,14 @@ public:
 
     // Instance of game loop.
     virtual void tick();
-
-    virtual void pressLeft();
-    virtual void releaseLeft();
-
-    virtual void pressRight();
-    virtual void releaseRight();
-
-
-    virtual void pressUp();
-    virtual void releaseUp();
-
-    virtual void pressDown();
-    virtual void releaseDown();
-
-    virtual void pressEscape();
-    virtual void pressPlus();
-    virtual void pressMinus();
-    virtual void pressR();
-    virtual void pressP();
+    
+    inline GameInput* getInput() { return &input; }
 
 private:
 
     // Sets the level.  Cleans up the old level data
     // and resets everything as necessary.
     void setLevelInternal( Level* level );
-
-    // Amount of time left.
-    unsigned int timeLeft( void );
 
     // Run the recursive detection routine.
     void runDetectionInternal( int x, int y );
@@ -153,7 +134,11 @@ private:
 
     bool checkAllow( MoveDirection inputDir );
 
-    void doLegacyInput();
+    // Handles game input.
+    void doInput();
+    
+    // Tells the game engine to quit.
+    void signalQuit();
 
     // Graphics object.
     Graphics graphics;
@@ -180,7 +165,10 @@ private:
     // Mask sprites.
     Sprite* spriteMask;
     Sprite* spriteMaskAnim;
-
+    
+    // Our input handler.
+    GameInput input;
+    
     // Paused variable (true if paused.)
     bool paused;
 
@@ -195,31 +183,13 @@ private:
 
     // Our main game object that we're moving around.
     GameObject* object;
-
-    // Indicates the user has pressed one of these.
-    bool isPressUp;
-    bool isPressDown;
-    bool isPressLeft;
-    bool isPressRight;
     
-    // Indicates the user has released one of these.
-    // Key releases are handled during the update loop to allow for quick key tapping.
-    bool isReleaseUp;
-    bool isReleaseDown;
-    bool isReleaseLeft;
-    bool isReleaseRight;
-
     // Direciton we're facing in.
     MoveDirection facingDirection;
-
-    // Should we accept directional input?
-    bool directionLock;
-
     int moveAmount;
-
-    bool shouldMove;
     
-    bool prevCanApplyMotion;
+    // True if the beetle is currently moving.
+    bool isBeetleMoving;
 
 };
 

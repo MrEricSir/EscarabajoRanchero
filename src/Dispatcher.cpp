@@ -7,55 +7,57 @@ using namespace Escarabajo;
 Uint32 DispatcherCallback(Uint32 interval, void *param);
 
 
-Dispatcher::Dispatcher()
+Dispatcher::Dispatcher() :
+    timerID(0),
+    eventHandler(NULL),
+    keyHandler(NULL)
 {
-    myHandler = NULL;
-    timerID = 0;
 }
 
 
 Dispatcher::~Dispatcher()
 {
-    unsetHandler();
+    setEventHandler(NULL);
+    setKeyHandler(NULL);
 }
 
 
-void Dispatcher::setDispatchHandler( DispatchHandler* dh )
+void Dispatcher::setEventHandler( DispatchEventHandler* dh )
 {
-    unsetHandler();
-    myHandler = dh;
-    timerID = SDL_AddTimer( myHandler->getInterval(), DispatcherCallback, 0 );
-}
-
-
-void Dispatcher::unsetHandler()
-{
-    myHandler = NULL;
+    // Unset.
+    eventHandler = NULL;
     SDL_RemoveTimer( timerID );
+    
+    // Set.
+    if (dh != NULL)
+    {
+        eventHandler = dh;
+        timerID = SDL_AddTimer( eventHandler->getInterval(), DispatcherCallback, 0 );
+    }
 }
 
+void Dispatcher::setKeyHandler( DispatchKeyHandler* dk )
+{
+    keyHandler = dk;
+}
 
 void Dispatcher::mainLoop()
 {
     SDL_Event Event;
     while( SDL_WaitEvent( &Event ) != 0 )
     {
-        if ( !myHandler )
-        {
-            continue;
-        }
 
         // Timer.
-        if ( SDL_USEREVENT == Event.type )
+        if ( eventHandler != NULL && SDL_USEREVENT == Event.type )
         {
-            myHandler->tick();
+            eventHandler->tick();
             continue;
         }
 
         // Quit.
         if ( SDL_QUIT == Event.type )
         {
-            if ( !myHandler->quit() )
+            if ( !eventHandler->quit() )
             {
                 return; // Exit loop.
             }
@@ -63,21 +65,21 @@ void Dispatcher::mainLoop()
         }
 
         // Key release.
-        if ( SDL_KEYUP == Event.type )
+        if ( keyHandler != NULL && SDL_KEYUP == Event.type )
         {
             switch ( Event.key.keysym.sym )
             {
             case SDLK_RIGHT:
-                myHandler->releaseRight();
+                keyHandler->releaseRight();
                 continue;
             case SDLK_LEFT:
-                myHandler->releaseLeft();
+                keyHandler->releaseLeft();
                 continue;
             case SDLK_DOWN:
-                myHandler->releaseDown();
+                keyHandler->releaseDown();
                 continue;
             case SDLK_UP:
-                myHandler->releaseUp();
+                keyHandler->releaseUp();
                 continue;
             default:
                 continue;
@@ -85,38 +87,38 @@ void Dispatcher::mainLoop()
         }
 
         // Key down.
-        if ( SDL_KEYDOWN == Event.type )
+        if ( keyHandler != NULL && SDL_KEYDOWN == Event.type )
         {
             switch ( Event.key.keysym.sym )
             {
             case SDLK_ESCAPE:
-                myHandler->pressEscape();
+                keyHandler->pressEscape();
                 continue;
             case SDLK_p:
-                myHandler->pressP();
+                keyHandler->pressP();
                 continue;
             case SDLK_r:
-                myHandler->pressR();
+                keyHandler->pressR();
                 continue;
             case SDLK_PLUS:
             case SDLK_KP_PLUS:
-                myHandler->pressPlus();
+                keyHandler->pressPlus();
                 continue;
             case SDLK_MINUS:
             case SDLK_KP_MINUS:
-                myHandler->pressMinus();
+                keyHandler->pressMinus();
                 continue;
             case SDLK_RIGHT:
-                myHandler->pressRight();
+                keyHandler->pressRight();
                 continue;
             case SDLK_DOWN:
-                myHandler->pressDown();
+                keyHandler->pressDown();
                 continue;
             case SDLK_LEFT:
-                myHandler->pressLeft();
+                keyHandler->pressLeft();
                 continue;
             case SDLK_UP:
-                myHandler->pressUp();
+                keyHandler->pressUp();
                 continue;
             default:
                 continue;

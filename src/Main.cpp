@@ -40,7 +40,8 @@ void startGame( int world, int level )
     game.addObject( &obj );
 
     // Main loop.
-    dispatcher.setDispatchHandler( &game );
+    dispatcher.setEventHandler( &game );
+    dispatcher.setKeyHandler( game.getInput() );
     dispatcher.mainLoop();
 }
 

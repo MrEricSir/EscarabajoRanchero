@@ -3,11 +3,12 @@
 #include "AudioSamples.h"
 #include "Universe.h"
 #include "GameSettings.h"
+#include "GameInput.h"
 
 using namespace std;
 using namespace Escarabajo;
 
-GameContext::GameContext( unsigned intervalMs ) : DispatchHandler( intervalMs )
+GameContext::GameContext( unsigned intervalMs ) : DispatchEventHandler( intervalMs ), input()
 {
     facingDirection = MOVE_UP;
     level = NULL;
@@ -19,7 +20,8 @@ GameContext::GameContext( unsigned intervalMs ) : DispatchHandler( intervalMs )
     transition = false;
     tickInterval = 120 / 15;// 6 frames per move?
     lastCastleOrder = 0;
-    shouldMove = false;
+    
+    inputReset();
 }
 
 
@@ -58,26 +60,16 @@ void GameContext::addObject( GameObject* object )
     objectList.push_back( object );
 }
 
+// Reset everything.
 void GameContext::inputReset( void )
 {
     facingDirection = MOVE_UP;
-    isPressUp = false;
-    isPressDown = false;
-    isPressRight = false;
-    isPressLeft = false;
-    directionLock = false;
     
-    isReleaseUp = false;
-    isReleaseDown = false;
-    isReleaseRight = false;
-    isReleaseLeft = false;
-    
-    shouldMove = false;
     transition = false;
-    prevCanApplyMotion = false;
+    isBeetleMoving = false;
 }
 
-// Reset a bunch of shit!!!
+// Load/display the level.  Can also be used to reset level.
 void GameContext::setLevelInternal( Level* l )
 {
     // Remove our level copy.
@@ -114,6 +106,7 @@ void GameContext::setLevelInternal( Level* l )
     inputReset();
     if ( object )
     {
+        object->setDirection( facingDirection );
         object->setLocation( level->getStartingX(), level->getStartingY() );
     }
 
@@ -241,13 +234,10 @@ void GameContext::render( void )
     graphics.endRendering();
 }
 
-
-
-
 void GameContext::animate()
 {
     // Animate game object if moving.
-    if ( canApplyMotion() )
+    if ( isBeetleMoving )
     {
         // Now go through our object list...
         vector<GameObject*>::iterator objectIter;
@@ -365,20 +355,6 @@ void GameContext::speedIncrease()
     {
         tickInterval -= 40;
     }
-}
-
-
-unsigned int GameContext::timeLeft( void )
-{
-    static unsigned int next_time = 0;
-    unsigned int now;
-
-    now = SDL_GetTicks();
-    if ( next_time <= now )
-    {
-        next_time = now + tickInterval;
-    }
-    return next_time - now;
 }
 
 void GameContext::runDetection( int x, int y )
@@ -564,8 +540,8 @@ void GameContext::tick()
     static int STEPMAX = Config::getAnimationStep() - 1;
     static int step = 0;
     
-    // Handle input.
-    doLegacyInput();
+    // Only handle motion at animation end.
+    bool doMotion = (step == STEPMAX);
     
     // Render,
     render();
@@ -573,20 +549,8 @@ void GameContext::tick()
     // Animate.
     animate();
     
-    bool isCanApplyMotion = canApplyMotion();
-    
-    // If the user just started moving, reset the animation cycle so that we
-    // accept their input immediately.
-    if (isCanApplyMotion && !prevCanApplyMotion)
-    {
-        step = 0;
-    }
-    
-    // Only handle motion at animation end.
-    bool doMotion = (step == STEPMAX);
-    
     // Handle motion.
-    if ( isCanApplyMotion )
+    if ( isBeetleMoving )
     {
         if ( doMotion )
         {
@@ -596,8 +560,8 @@ void GameContext::tick()
             // Draw snake.
             getLevel()->drawSnake( object->getX(), object->getY(), facingDirection );
             step = 0;
-
-            directionLock = false;
+            
+            isBeetleMoving = false;
         }
         else
         {
@@ -606,29 +570,12 @@ void GameContext::tick()
     }
     else
     {
-        directionLock = false;
+        step = 0;
     }
     
-    // Deal with key releases here to allow quick taps to affect the above loop.
-    if (isReleaseUp)
-        isPressUp = false;
-    if (isReleaseDown)
-        isPressDown = false;
-    if (isReleaseRight)
-        isPressRight = false;
-    if (isReleaseLeft)
-        isPressLeft = false;
-    
-    // Release all when we're at a sprite boundary.
-    if ( doMotion )
-    {
-        isReleaseUp = false;
-        isReleaseDown = false;
-        isReleaseRight = false;
-        isReleaseLeft = false;
-    }
-    
-    prevCanApplyMotion = isCanApplyMotion;
+    // Handle input.
+    if (!isPaused() && !getLevel()->isComplete() && !isBeetleMoving)
+        doInput();
 }
 
 
@@ -656,123 +603,30 @@ GameFont* GameContext::getFont()
     return &font;
 }
 
-void GameContext::pressEscape()
-{
-    SDL_Event event;
-    event.type = SDL_QUIT;
-
-    SDL_PushEvent(&event);
-}
-
-void GameContext::pressLeft()
-{
-    if ( checkAllow( MOVE_LEFT ) )
-    {
-        isPressLeft = true;
-    }
-}
-void GameContext::releaseLeft()
-{
-    //isPressLeft = false;
-    isReleaseLeft = true;
-}
-
-void GameContext::pressRight()
-{
-    if ( checkAllow( MOVE_RIGHT ) )
-    {
-        isPressRight = true;
-    }
-}
-void GameContext::releaseRight()
-{
-    //isPressRight = false;
-    isReleaseRight = true;
-}
-
-
-void GameContext::pressUp()
-{
-    if ( checkAllow( MOVE_UP ) )
-    {
-        isPressUp = true;
-    }
-}
-void GameContext::releaseUp()
-{
-    //isPressUp = false;
-    isReleaseUp = true;
-}
-
-void GameContext::pressDown()
-{
-    if ( checkAllow( MOVE_DOWN ) )
-    {
-        isPressDown = true;
-    }
-}
-void GameContext::releaseDown()
-{
-    //isPressDown = false;
-    isReleaseDown = true;
-}
-
-
-void GameContext::pressPlus()
-{
-    speedIncrease();
-}
-
-void GameContext::pressMinus()
-{
-    speedDecrease();
-}
-
-void GameContext::pressR()
-{
-    if ( !isPaused() )
-    {
-        restartLevel();
-    }
-}
-
-void GameContext::pressP()
-{
-    setPaused( !isPaused() );
-}
-
-
 bool GameContext::canApplyMotion()
 {
-    MoveDirection direction = facingDirection;
-
-    if ( !shouldMove )
-    {
-        return false;
-    }
-
-    if ( MOVE_UP == direction )
+    if ( MOVE_UP == facingDirection )
     {
         int newY = object->getY() - moveAmount;
-        return getLevel()->canMoveTo( object->getX(), newY, direction );
+        return getLevel()->canMoveTo( object->getX(), newY, facingDirection );
     }
 
-    if ( MOVE_DOWN == direction )
+    if ( MOVE_DOWN == facingDirection )
     {
         int newY = object->getY() + moveAmount;
-        return getLevel()->canMoveTo( object->getX(), newY, direction );
+        return getLevel()->canMoveTo( object->getX(), newY, facingDirection );
     }
 
-    if ( MOVE_RIGHT == direction )
+    if ( MOVE_RIGHT == facingDirection )
     {
         int newX = object->getX() + moveAmount;
-        return getLevel()->canMoveTo( newX, object->getY(), direction );
+        return getLevel()->canMoveTo( newX, object->getY(), facingDirection );
     }
 
-    if ( MOVE_LEFT == direction )
+    if ( MOVE_LEFT == facingDirection )
     {
         int newX = object->getX() - moveAmount;
-        return getLevel()->canMoveTo( newX, object->getY(), direction );
+        return getLevel()->canMoveTo( newX, object->getY(), facingDirection );
     }
 
     return false;
@@ -782,9 +636,8 @@ bool GameContext::canApplyMotion()
 void GameContext::applyMotion()
 {
     // Okay now MOVE!
-    if ( shouldMove )
+    if ( isBeetleMoving )
     {
-
         MoveDirection direction = facingDirection;
         if ( MOVE_UP == direction )
         {
@@ -799,7 +652,7 @@ void GameContext::applyMotion()
             }
             else
             {
-                shouldMove = false;
+                isBeetleMoving = false;
                 return;
             }
         }
@@ -819,7 +672,7 @@ void GameContext::applyMotion()
             }
             else
             {
-                shouldMove = false;
+                isBeetleMoving = false;
                 return;
             }
         }
@@ -837,7 +690,7 @@ void GameContext::applyMotion()
             }
             else
             {
-                shouldMove = false;
+                isBeetleMoving = false;
                 return;
             }
         }
@@ -855,7 +708,7 @@ void GameContext::applyMotion()
             }
             else
             {
-                shouldMove = false;
+                isBeetleMoving = false;
                 return;
             }
         }
@@ -873,9 +726,9 @@ void GameContext::applyMotion()
     }
 
 
-    if ( transition || !shouldMove )
+    if ( transition || !isBeetleMoving )
     {
-        shouldMove = false;
+        isBeetleMoving = false;
         return;
     }
 
@@ -887,7 +740,7 @@ void GameContext::applyMotion()
         runDetection( object->getX(), object->getY() );
     }
 
-    shouldMove = false;
+    isBeetleMoving = false;
 
     // Decrement fuel.
     decrementFuel();
@@ -941,44 +794,40 @@ bool GameContext::checkAllow( MoveDirection inputDir )
 }
 
 
-void GameContext::doLegacyInput()
+void GameContext::doInput()
 {
-    // Now the fun part!
-    // Don't do anything if we're paused or done.
-    if ( !isPaused() && !getLevel()->isComplete() )
+    if ( input.shouldRestart() )
     {
-        if ( !directionLock )
-        {
-            if ( isPressRight )
-            {
-                facingDirection = MOVE_RIGHT;
-                shouldMove = true;
-                directionLock = true;
-            }
-            else if ( isPressDown )
-            {
-                facingDirection = MOVE_DOWN;
-                shouldMove = true;
-                directionLock = true;
-            }
-            else if ( isPressLeft )
-            {
-                facingDirection = MOVE_LEFT;
-                shouldMove = true;
-                directionLock = true;
-            }
-            else if ( isPressUp )
-            {
-                facingDirection = MOVE_UP;
-                shouldMove = true;
-                directionLock = true;
-            }
-        }
-
-        // Change direction.
+        restartLevel();
+        return;
+    }
+    
+    if ( input.shouldQuit() )
+    {
+        signalQuit();
+        return;
+    }
+    
+    MoveDirection dir = input.getDirection();
+    
+    if ( dir != NONE && checkAllow( dir ) )
+    {
+        // Set facing direction.
+        facingDirection = dir;
         object->setDirection( facingDirection );
-
+        
+        // Change moving flag if this is a direction we can move in.
+        isBeetleMoving = canApplyMotion();
+        
         // Compute snake.
         getLevel()->drawSnake( object->getX(), object->getY(), facingDirection );
     }
+}
+
+void GameContext::signalQuit()
+{
+    SDL_Event event;
+    event.type = SDL_QUIT;
+    
+    SDL_PushEvent(&event);
 }
