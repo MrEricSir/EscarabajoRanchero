@@ -556,7 +556,10 @@ void GameContext::tick()
     // Do animation and graphics.
     static int STEPMAX = Config::getAnimationStep() - 1;
     static int step = 0;
-
+    
+    // Handle input.
+    doLegacyInput();
+    
     // Render,
     render();
 
@@ -586,11 +589,7 @@ void GameContext::tick()
     {
         directionLock = false;
     }
-
-    doLegacyInput();
-
 }
-
 
 
 void GameContext::decrementFuel()
@@ -631,12 +630,10 @@ void GameContext::pressLeft()
     {
         isPressLeft = true;
     }
-    doLegacyInput();
 }
 void GameContext::releaseLeft()
 {
     isPressLeft = false;
-    doLegacyInput();
 }
 
 void GameContext::pressRight()
@@ -645,13 +642,10 @@ void GameContext::pressRight()
     {
         isPressRight = true;
     }
-
-    doLegacyInput();
 }
 void GameContext::releaseRight()
 {
     isPressRight = false;
-    doLegacyInput();
 }
 
 
@@ -661,12 +655,10 @@ void GameContext::pressUp()
     {
         isPressUp = true;
     }
-    doLegacyInput();
 }
 void GameContext::releaseUp()
 {
     isPressUp = false;
-    doLegacyInput();
 }
 
 void GameContext::pressDown()
@@ -675,12 +667,10 @@ void GameContext::pressDown()
     {
         isPressDown = true;
     }
-    doLegacyInput();
 }
 void GameContext::releaseDown()
 {
     isPressDown = false;
-    doLegacyInput();
 }
 
 
@@ -947,7 +937,4 @@ void GameContext::doLegacyInput()
         // Compute snake.
         getLevel()->drawSnake( object->getX(), object->getY(), facingDirection );
     }
-
 }
-
-
