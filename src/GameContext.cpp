@@ -74,6 +74,7 @@ void GameContext::inputReset( void )
     
     shouldMove = false;
     transition = false;
+    prevCanApplyMotion = false;
 }
 
 // Reset a bunch of shit!!!
@@ -562,7 +563,6 @@ void GameContext::tick()
     // Do animation and graphics.
     static int STEPMAX = Config::getAnimationStep() - 1;
     static int step = 0;
-    bool doMotion = false;
     
     // Handle input.
     doLegacyInput();
@@ -573,11 +573,20 @@ void GameContext::tick()
     // Animate.
     animate();
     
-    if (step == STEPMAX)
-        doMotion = true;
-
+    bool isCanApplyMotion = canApplyMotion();
+    
+    // If the user just started moving, reset the animation cycle so that we
+    // accept their input immediately.
+    if (isCanApplyMotion && !prevCanApplyMotion)
+    {
+        step = 0;
+    }
+    
+    // Only handle motion at animation end.
+    bool doMotion = (step == STEPMAX);
+    
     // Handle motion.
-    if ( canApplyMotion() )
+    if ( isCanApplyMotion )
     {
         if ( doMotion )
         {
@@ -618,6 +627,8 @@ void GameContext::tick()
         isReleaseRight = false;
         isReleaseLeft = false;
     }
+    
+    prevCanApplyMotion = isCanApplyMotion;
 }
 
 

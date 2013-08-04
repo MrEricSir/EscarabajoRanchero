@@ -218,6 +218,8 @@ private:
     int moveAmount;
 
     bool shouldMove;
+    
+    bool prevCanApplyMotion;
 
 };
 
