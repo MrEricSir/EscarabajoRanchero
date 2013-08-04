@@ -196,10 +196,18 @@ private:
     // Our main game object that we're moving around.
     GameObject* object;
 
+    // Indicates the user has pressed one of these.
     bool isPressUp;
     bool isPressDown;
     bool isPressLeft;
     bool isPressRight;
+    
+    // Indicates the user has released one of these.
+    // Key releases are handled during the update loop to allow for quick key tapping.
+    bool isReleaseUp;
+    bool isReleaseDown;
+    bool isReleaseLeft;
+    bool isReleaseRight;
 
     // Direciton we're facing in.
     MoveDirection facingDirection;

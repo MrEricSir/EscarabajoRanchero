@@ -66,6 +66,12 @@ void GameContext::inputReset( void )
     isPressRight = false;
     isPressLeft = false;
     directionLock = false;
+    
+    isReleaseUp = false;
+    isReleaseDown = false;
+    isReleaseRight = false;
+    isReleaseLeft = false;
+    
     shouldMove = false;
     transition = false;
 }
@@ -556,6 +562,7 @@ void GameContext::tick()
     // Do animation and graphics.
     static int STEPMAX = Config::getAnimationStep() - 1;
     static int step = 0;
+    bool doMotion = false;
     
     // Handle input.
     doLegacyInput();
@@ -565,11 +572,14 @@ void GameContext::tick()
 
     // Animate.
     animate();
+    
+    if (step == STEPMAX)
+        doMotion = true;
 
     // Handle motion.
     if ( canApplyMotion() )
     {
-        if ( step == STEPMAX )
+        if ( doMotion )
         {
             //directionLock = false;
             applyMotion();
@@ -588,6 +598,25 @@ void GameContext::tick()
     else
     {
         directionLock = false;
+    }
+    
+    // Deal with key releases here to allow quick taps to affect the above loop.
+    if (isReleaseUp)
+        isPressUp = false;
+    if (isReleaseDown)
+        isPressDown = false;
+    if (isReleaseRight)
+        isPressRight = false;
+    if (isReleaseLeft)
+        isPressLeft = false;
+    
+    // Release all when we're at a sprite boundary.
+    if ( doMotion )
+    {
+        isReleaseUp = false;
+        isReleaseDown = false;
+        isReleaseRight = false;
+        isReleaseLeft = false;
     }
 }
 
@@ -633,7 +662,8 @@ void GameContext::pressLeft()
 }
 void GameContext::releaseLeft()
 {
-    isPressLeft = false;
+    //isPressLeft = false;
+    isReleaseLeft = true;
 }
 
 void GameContext::pressRight()
@@ -645,7 +675,8 @@ void GameContext::pressRight()
 }
 void GameContext::releaseRight()
 {
-    isPressRight = false;
+    //isPressRight = false;
+    isReleaseRight = true;
 }
 
 
@@ -658,7 +689,8 @@ void GameContext::pressUp()
 }
 void GameContext::releaseUp()
 {
-    isPressUp = false;
+    //isPressUp = false;
+    isReleaseUp = true;
 }
 
 void GameContext::pressDown()
@@ -670,7 +702,8 @@ void GameContext::pressDown()
 }
 void GameContext::releaseDown()
 {
-    isPressDown = false;
+    //isPressDown = false;
+    isReleaseDown = true;
 }
 
 
