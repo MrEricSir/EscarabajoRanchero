@@ -133,8 +133,9 @@ void GameInput::directionPressed( MoveDirection dir )
     if (!keyStackContains( dir ))
         keyStack.push_back( dir );
     
-    // Remember that this key is held down.
-    pressed[ dir ] = KEYSTATE_PRESSED;
+    // Remember that this key is held down (unless we've already seen a tap release.)
+    if ( pressed[ dir ] != KEYSTATE_RELEASING )
+        pressed[ dir ] = KEYSTATE_PRESSED;
 }
 
 void GameInput::directionReleased( MoveDirection dir )
