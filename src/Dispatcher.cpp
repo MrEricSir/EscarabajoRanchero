@@ -2,10 +2,11 @@
 
 using namespace Escarabajo;
 
-
 // Timer callback.
 Uint32 DispatcherCallback(Uint32 interval, void *param);
 
+
+static bool timerEventOustanding = false;
 
 Dispatcher::Dispatcher() :
     timerID(0),
@@ -50,6 +51,7 @@ void Dispatcher::mainLoop()
         // Timer.
         if ( eventHandler != NULL && SDL_USEREVENT == Event.type )
         {
+            timerEventOustanding = false;
             eventHandler->tick();
             continue;
         }
@@ -133,6 +135,11 @@ void Dispatcher::mainLoop()
 // Callback used for timing event.
 Uint32 DispatcherCallback( Uint32 interval, void *param )
 {
+    if (timerEventOustanding)
+        return interval; // Prevent bunching up.
+    
+    timerEventOustanding = true;
+    
     SDL_Event event;
     event.type = SDL_USEREVENT;
 
