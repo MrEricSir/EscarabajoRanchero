@@ -15,7 +15,6 @@ GameContext::GameContext( unsigned intervalMs ) : DispatchEventHandler( interval
     detect = NULL;
     mask = NULL;
     spriteMask = NULL;
-    spriteMaskAnim = NULL;
     paused = false;
     transition = false;
     tickInterval = 120 / 15;// 6 frames per move?
@@ -196,8 +195,8 @@ void GameContext::render( void )
 {
     graphics.beginRendering();
 
-    // Let's start with our level.
-    level->draw();
+    // Let's start with our level's background.
+    level->drawBackground();
 
     // Draw our mask.
     for ( int y = 0; y < mask->getHeight(); ++y )
@@ -209,18 +208,16 @@ void GameContext::render( void )
             {
                 continue;
             }
-            else if ( 1 == m )
-            {
-                // Animated sprite mask.
-                spriteMaskAnim->draw( x * Config::getWidthOfLevelPiece9(), y * Config::getHeightOfLevelPiece9(), -1 );
-            }
             else
             {
-                // Static sprite mask.
-                spriteMask->draw( x * Config::getWidthOfLevelPiece9(), y * Config::getHeightOfLevelPiece9(), -1 );
+                // Sprite mask.
+                spriteMask->draw( x * Config::getWidthOfLevelPiece9(), y * Config::getHeightOfLevelPiece9(), -6 );
             }
         }
     }
+    
+    // Next, we draw level sprites.
+    level->draw();
 
     // Now go through our object list...
     vector<GameObject*>::iterator objectIter;
@@ -250,9 +247,6 @@ void GameContext::animate()
 
     // Tell level to animate.
     level->animate();
-
-    // Animate the sprite mask.
-    spriteMaskAnim->animAdvance();
 }
 
 
@@ -307,7 +301,6 @@ void GameContext::start( void )
     // Get our mask sprite.
     // TODO: move to level?
     spriteMask = LevelFactory::getSprite( 'm' );
-    spriteMaskAnim = LevelFactory::getSprite( 'e' );
 
     // TEMP:
     // start music.
@@ -367,7 +360,7 @@ void GameContext::runDetection( int x, int y )
 
     detect->resetDetection();
 
-    // Run detection.
+    // Run detection.
     // TODO: optimize!  This may not be need to run
     //       in all four directions.
     int mx = x * 3 + 1;
@@ -392,9 +385,6 @@ void GameContext::runDetectionInternal( int x, int y )
         {
             // Play a little sound.
             Audio::playSound( AUDIO_LASSO_COMPLETE );
-
-            // Reset animated sprite mask.
-            spriteMaskAnim->animReset();
 
             // Increment fuel by 9.
             int fuel = level->getRemainingFuel();

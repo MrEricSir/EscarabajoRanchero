@@ -26,8 +26,6 @@ S = resources/img/ordered9a.1.png, resources/img/ordered9a.2.png, resources/img/
 
 #### Miscellaneous
 # Mask
-# e is animated piece, m is the static piece draw after the animation.
-e = resources/img/mask3-2.2.png, resources/img/mask3-2.3.png, resources/img/mask3-2.4.png, resources/img/mask3-2.5.png,
 m = resources/img/mask3-2.5.png
 
 #### Beetle
