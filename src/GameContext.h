@@ -164,7 +164,6 @@ private:
 
     // Mask sprites.
     Sprite* spriteMask;
-    Sprite* spriteMaskAnim;
     
     // Our input handler.
     GameInput input;
