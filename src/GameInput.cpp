@@ -19,17 +19,6 @@ GameInput::~GameInput()
 
 MoveDirection GameInput::getDirection()
 {
-    for ( int i = 0; i < DIRECTION_COUNT; i++ ) {
-        // Acknolwedge keys that we've read.
-        if ( pressed[i] == KEYSTATE_PRESSED )
-            pressed[i] = KEYSTATE_PRESSED_READ;
-        
-        // Set keys that are releasing back to up state.
-        // This allows us to handle keys that were briefly tapped
-        if ( pressed[i] == KEYSTATE_RELEASING )
-            pressed[i] = KEYSTATE_RELEASED;
-    }
-    
     // Remove unset keys from stack.
     // TODO: This can be optimized.
     if ( pressed[MOVE_UP] == KEYSTATE_RELEASED )
@@ -43,6 +32,17 @@ MoveDirection GameInput::getDirection()
     
     if ( pressed[MOVE_LEFT] == KEYSTATE_RELEASED )
         removeFromKeyStack( MOVE_LEFT );
+    
+    for ( int i = 0; i < DIRECTION_COUNT; i++ ) {
+        // Acknolwedge keys that we've read.
+        if ( pressed[i] == KEYSTATE_PRESSED )
+            pressed[i] = KEYSTATE_PRESSED_READ;
+        
+        // Set keys that are releasing back to up state.
+        // This allows us to handle keys that were briefly tapped
+        if ( pressed[i] == KEYSTATE_RELEASING )
+            pressed[i] = KEYSTATE_RELEASED;
+    }
     
     // Grab whatever direction was most recently pressed.
     if (keyStack.size() == 0)
@@ -133,8 +133,9 @@ void GameInput::directionPressed( MoveDirection dir )
     if (!keyStackContains( dir ))
         keyStack.push_back( dir );
     
-    // Remember that this key is held down.
-    pressed[ dir ] = KEYSTATE_PRESSED;
+    // Remember that this key is held down (unless we've already seen a tap release.)
+    if ( pressed[ dir ] != KEYSTATE_RELEASING )
+        pressed[ dir ] = KEYSTATE_PRESSED;
 }
 
 void GameInput::directionReleased( MoveDirection dir )

@@ -530,14 +530,16 @@ void GameContext::tick()
     static int STEPMAX = Config::getAnimationStep() - 1;
     static int step = 0;
     
+    // Handle input.
+    if (!isPaused() && !getLevel()->isComplete() && !isBeetleMoving)
+        doInput();
+    
     // Only handle motion at animation end.
     bool doMotion = (step == STEPMAX);
     
-    // Render,
-    render();
-
-    // Animate.
+    // Animate, then render.
     animate();
+    render();
     
     // Handle motion.
     if ( isBeetleMoving )
@@ -562,10 +564,6 @@ void GameContext::tick()
     {
         step = 0;
     }
-    
-    // Handle input.
-    if (!isPaused() && !getLevel()->isComplete() && !isBeetleMoving)
-        doInput();
 }
 
 
