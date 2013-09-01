@@ -1,77 +1,77 @@
 #[Test]
 #dir = resources/level/15x15/
 #levels = wrap2.png,laps.png,wrap1.png,ordered3.png,paw.png,ordered2.png,4eyes.png,3eyes.png,L7.png
-#background = resources/img/bg1.png
+#background = resources/img/new/dirt.png
 
 [1A: Hill]
 # Difficulty: introdutory to easy
 # Features: none
 dir = resources/level/15x15/
 levels = intro1.png,intro2.png,intro3.png,intro4.png,intro5.png
-background = resources/img/tiles/bg4atile.png
+background = resources/img/new/dirt.png
 
 [1B: Pasture]
 # Difficulty: easy to medium
 # Features: none
 dir = resources/level/15x15/
 levels = intro6.png,intro7.png,badger.png
-background = resources/img/tiles/bg11tile.png
+background = resources/img/new/dirt.png
 
 [2A: Soft Bark]
 # Difficulty: easy to medium
 # Features: dead aphids
 dir = resources/level/15x15/
 levels = weak2.png,weak5.png
-background = resources/img/tiles/bg17tile.png
+background = resources/img/new/dirt.png
 
 [2B: Toxic Soil]
 # Difficulty: medium
 # Features: dead aphids
 dir = resources/level/15x15/
 levels = weak3.png,weak4.png
-background = resources/img/tiles/bg12tile.png
+background = resources/img/new/dirt.png
 
 [3A: Colony]
 # Difficulty: medium
 # Features: ordered aphids
 dir = resources/level/15x15/
 levels = intro1.png
-background = resources/img/tiles/bg4atile.png
+background = resources/img/new/dirt.png
 
 [3B: Glen]
 # Difficulty: medium to hard
 # Features: dead aphids + ordered aphids
 dir = resources/level/15x15/
 levels = intro1.png
-background = resources/img/tiles/bg4atile.png
+background = resources/img/new/dirt.png
 
 [4A: Jungle]
 # Difficulty: medium to hard
 # Features: limited silk
 dir = resources/level/15x15/
 levels = caterpillar.png,cross.png,fuel1.png,fuel2.png
-background = resources/img/tiles/bg4atile.png
+background = resources/img/new/dirt.png
 
 [4B: Deep Earth]
 # Difficulty: hard
 # Features: limited silk + dead aphids, limited silk + ordered aphids
 dir = resources/level/15x15/
 levels = intro1.png
-background = resources/img/tiles/bg4atile.png
+background = resources/img/new/dirt.png
 
 [5A: Infestation]
 # Difficulty: hard
 # Features: all
 dir = resources/level/15x15/
 levels = weak6.png,ordered-weak.png,halogen.png
-background = resources/img/tiles/bg4atile.png
+background = resources/img/new/dirt.png
 
 [5B: Aphid World]
 # Difficulty: YAAAARGH
 # Features: all
 dir = resources/level/15x15/
 levels = intro1.png
-background = resources/img/tiles/bg4atile.png
+background = resources/img/new/dirt.png
 
 #### Good levels (possibly usable)
 # 3eyes
