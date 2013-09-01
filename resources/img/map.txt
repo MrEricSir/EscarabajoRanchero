@@ -1,17 +1,17 @@
 #### PNG level files
 # A: Start
 # Exit
-B = resources/img/exithole3.png
+B = resources/img/new/exit.png
 # Wall or castle filler
 C = resources/img/wall15-13.png
 # Normal castles
-D = resources/img/aphid5.1.png, resources/img/aphid5.2.png, resources/img/aphid5.3.png, resources/img/aphid5.2.png
-E = resources/img/aphid5.1.png, resources/img/aphid5.2.png, resources/img/aphid5.3.png, resources/img/aphid5.2.png
-F = resources/img/aphid5.1.png, resources/img/aphid5.2.png, resources/img/aphid5.3.png, resources/img/aphid5.2.png
+D = resources/img/new/aphid-u.1.png, resources/img/new/aphid-u.2.png, resources/img/new/aphid-u.3.png, resources/img/new/aphid-u.4.png
+E = resources/img/new/aphid-u.1.png, resources/img/new/aphid-u.2.png, resources/img/new/aphid-u.3.png, resources/img/new/aphid-u.4.png
+F = resources/img/new/aphid-u.1.png, resources/img/new/aphid-u.2.png, resources/img/new/aphid-u.3.png, resources/img/new/aphid-u.4.png
 # Weak castles
-G = resources/img/aphid5dead.png
-H = resources/img/aphid5dead.png
-I = resources/img/aphid5dead.png
+G = resources/img/new/aphid_dead.png
+H = resources/img/new/aphid_dead.png
+I = resources/img/new/aphid_dead.png
 # J: Weak castle filler
 # Ordered castles
 K = resources/img/ordered1a.1.png, resources/img/ordered1a.2.png, resources/img/ordered1a.3.png, resources/img/ordered1a.2.png
@@ -32,42 +32,42 @@ m = resources/img/mask3-2.5.png
 
 #### Beetle
 # Up
-u = resources/img/beetle1-u.1.png, resources/img/beetle1-u.2.png, resources/img/beetle1-u.3.png, resources/img/beetle1-u.4.png
+u = resources/img/new/beetle-u.1.png, resources/img/new/beetle-u.2.png, resources/img/new/beetle-u.3.png, resources/img/new/beetle-u.4.png
 # Down
-i = resources/img/beetle1-d.1.png, resources/img/beetle1-d.2.png, resources/img/beetle1-d.3.png, resources/img/beetle1-d.4.png
+i = resources/img/new/beetle-d.1.png, resources/img/new/beetle-d.2.png, resources/img/new/beetle-d.3.png, resources/img/new/beetle-d.4.png
 # Left
-o = resources/img/beetle1-l.1.png, resources/img/beetle1-l.2.png, resources/img/beetle1-l.3.png, resources/img/beetle1-l.4.png
+o = resources/img/new/beetle-l.1.png, resources/img/new/beetle-l.2.png, resources/img/new/beetle-l.3.png, resources/img/new/beetle-l.4.png
 # Right
-p = resources/img/beetle1-r.1.png, resources/img/beetle1-r.2.png, resources/img/beetle1-r.3.png, resources/img/beetle1-r.4.png
+p = resources/img/new/beetle-r.1.png, resources/img/new/beetle-r.2.png, resources/img/new/beetle-r.3.png, resources/img/new/beetle-r.4.png
 
 #### Trail
 # Cross
-q = resources/img/silk_udlr.png
+q = resources/img/new/trail-udlr.png
 # Vertical
-z = resources/img/silk_ud.png
+z = resources/img/new/trail-ud.png
 # Horizontal
-x = resources/img/silk_lr.png
+x = resources/img/new/trail-lr.png
 # Up-left
-c = resources/img/silk_ul.png
+c = resources/img/new/trail-ul.png
 # Up-right
-v = resources/img/silk_ur.png
+v = resources/img/new/trail-ur.png
 # Down-left
-b = resources/img/silk_dl.png
+b = resources/img/new/trail-dl.png
 # Down-right
-n = resources/img/silk_dr.png
+n = resources/img/new/trail-dr.png
 # Up-down-left
-h = resources/img/silk_udl.png
+h = resources/img/new/trail-udl.png
 # Up-down-right
-j = resources/img/silk_udr.png
+j = resources/img/new/trail-udr.png
 # Up-left-right
-k = resources/img/silk_ulr.png
+k = resources/img/new/trail-ulr.png
 # Down-left-right
-l = resources/img/silk_dlr.png
+l = resources/img/new/trail-dlr.png
 # Start up
-a = resources/img/silk_start_u.png
+a = resources/img/new/start-u.png
 # Stard down
-s = resources/img/silk_start_d.png
+s = resources/img/new/start-d.png
 # Start left
-d = resources/img/silk_start_l.png
+d = resources/img/new/start-l.png
 # Start right
-f = resources/img/silk_start_r.png
+f = resources/img/new/start-r.png

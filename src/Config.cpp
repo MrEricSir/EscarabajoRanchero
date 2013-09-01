@@ -21,8 +21,8 @@ void Config::init()
     screenWidth = 640;
     screenHeight = 480;
 
-    widthOfLevelPiece = 15;
-    heightOfLevelPiece = 15;
+    widthOfLevelPiece = 14;
+    heightOfLevelPiece = 14;
 
     widthOfLevelPiece9 = 5;
     heightOfLevelPiece9 = 5;
