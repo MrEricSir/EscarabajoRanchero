@@ -131,6 +131,8 @@ public:
      * Note: level must be initialized for this to work!
      */
     void setSprite( Sprite* s, const int& x, const int& y );
+    
+    void drawBackground();
 
     /**
      * Draws the level.

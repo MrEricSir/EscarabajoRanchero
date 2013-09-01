@@ -144,23 +144,26 @@ void Level::setSprite( Sprite* s, const int& x, const int& y )
     }
 }
 
-void Level::draw()
+void Level::drawBackground()
 {
     // Draw tessellated background sprite.
-    if ( background )
-    {
-        int maxX = Config::getScreenWidth();
-        int maxY = Config::getScreenHeight();
+    if ( !background )
+        return;
+    
+    int maxX = Config::getScreenWidth();
+    int maxY = Config::getScreenHeight();
 
-        for ( int y = 0; y < maxY; y+= background->getHeight() )
+    for ( int y = 0; y < maxY; y+= background->getHeight() )
+    {
+        for ( int x = 0; x < maxX; x+= background->getWidth() )
         {
-            for ( int x = 0; x < maxX; x+= background->getWidth() )
-            {
-                background->draw( x, y, -10 );
-            }
+            background->draw( x, y, -10 );
         }
     }
+}
 
+void Level::draw()
+{
     // Black out area under scorebox.
     int yBottom = height * Config::getHeightOfLevelPiece();
     for ( int x = 0; x < width; x++ )
